@@ -1,0 +1,223 @@
+/* ===== РАМКИ ДЛЯ АВАТАРА ===== */
+
+/* Базовый стиль аватара с рамкой */
+.profile-avatar.framed {
+    position: relative;
+    padding: 4px;
+    border-radius: 50%;
+    overflow: visible;
+}
+
+/* Бронзовая рамка (уровень 5) */
+.profile-avatar.frame-5 {
+    border: 3px solid #cd7f32;
+    box-shadow: 
+        0 0 10px rgba(205, 127, 50, 0.5),
+        inset 0 0 10px rgba(205, 127, 50, 0.3);
+    background: linear-gradient(135deg, #8b4513, #cd7f32, #8b4513);
+    animation: bronzePulse 3s ease-in-out infinite;
+}
+
+@keyframes bronzePulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 10px rgba(205, 127, 50, 0.5),
+            inset 0 0 10px rgba(205, 127, 50, 0.3);
+    }
+    50% {
+        box-shadow: 
+            0 0 20px rgba(205, 127, 50, 0.8),
+            inset 0 0 15px rgba(205, 127, 50, 0.5);
+    }
+}
+
+/* Серебряная рамка (уровень 10) */
+.profile-avatar.frame-10 {
+    border: 3px solid #c0c0c0;
+    box-shadow: 
+        0 0 15px rgba(192, 192, 192, 0.6),
+        inset 0 0 10px rgba(192, 192, 192, 0.4);
+    background: linear-gradient(135deg, #808080, #e0e0e0, #808080);
+    animation: silverShine 4s ease-in-out infinite;
+}
+
+@keyframes silverShine {
+    0%, 100% {
+        box-shadow: 
+            0 0 15px rgba(192, 192, 192, 0.6),
+            inset 0 0 10px rgba(192, 192, 192, 0.4);
+    }
+    50% {
+        box-shadow: 
+            0 0 25px rgba(192, 192, 192, 0.9),
+            inset 0 0 15px rgba(192, 192, 192, 0.6);
+    }
+}
+
+/* Золотая рамка (уровень 15) */
+.profile-avatar.frame-15 {
+    border: 3px solid #ffd700;
+    box-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.7),
+        inset 0 0 15px rgba(255, 215, 0, 0.5);
+    background: linear-gradient(135deg, #daa520, #ffd700, #ffed4e, #daa520);
+    animation: goldGlow 3s ease-in-out infinite;
+}
+
+@keyframes goldGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(255, 215, 0, 0.7),
+            inset 0 0 15px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(255, 215, 0, 1),
+            inset 0 0 20px rgba(255, 215, 0, 0.7);
+    }
+}
+
+/* Платиновая рамка (уровень 20) */
+.profile-avatar.frame-20 {
+    border: 3px solid #e5e4e2;
+    box-shadow: 
+        0 0 25px rgba(229, 228, 226, 0.7),
+        inset 0 0 15px rgba(229, 228, 226, 0.5),
+        0 0 40px rgba(168, 169, 173, 0.4);
+    background: linear-gradient(135deg, #a8a9ad, #e5e4e2, #ffffff, #e5e4e2);
+    animation: platinumShimmer 4s ease-in-out infinite;
+}
+
+@keyframes platinumShimmer {
+    0%, 100% {
+        box-shadow: 
+            0 0 25px rgba(229, 228, 226, 0.7),
+            inset 0 0 15px rgba(229, 228, 226, 0.5);
+    }
+    50% {
+        box-shadow: 
+            0 0 35px rgba(229, 228, 226, 1),
+            inset 0 0 20px rgba(229, 228, 226, 0.7),
+            0 0 50px rgba(168, 169, 173, 0.6);
+    }
+}
+
+/* Алмазная рамка (уровень 25) */
+.profile-avatar.frame-25 {
+    border: 3px solid #b9f2ff;
+    box-shadow: 
+        0 0 30px rgba(185, 242, 255, 0.8),
+        inset 0 0 20px rgba(185, 242, 255, 0.6),
+        0 0 50px rgba(0, 191, 255, 0.5);
+    background: linear-gradient(135deg, #00bfff, #b9f2ff, #e0ffff, #00bfff);
+    animation: diamondSparkle 3s ease-in-out infinite;
+}
+
+@keyframes diamondSparkle {
+    0%, 100% {
+        box-shadow: 
+            0 0 30px rgba(185, 242, 255, 0.8),
+            inset 0 0 20px rgba(185, 242, 255, 0.6);
+    }
+    50% {
+        box-shadow: 
+            0 0 40px rgba(185, 242, 255, 1),
+            inset 0 0 25px rgba(185, 242, 255, 0.8),
+            0 0 60px rgba(0, 191, 255, 0.7);
+    }
+}
+
+/* Рубиновая рамка (уровень 30) */
+.profile-avatar.frame-30 {
+    border: 3px solid #e0115f;
+    box-shadow: 
+        0 0 30px rgba(224, 17, 95, 0.8),
+        inset 0 0 20px rgba(224, 17, 95, 0.6),
+        0 0 50px rgba(155, 17, 30, 0.5);
+    background: linear-gradient(135deg, #9b111e, #e0115f, #ff1a6d, #9b111e);
+    animation: rubyGlow 3s ease-in-out infinite;
+}
+
+@keyframes rubyGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 30px rgba(224, 17, 95, 0.8),
+            inset 0 0 20px rgba(224, 17, 95, 0.6);
+    }
+    50% {
+        box-shadow: 
+            0 0 40px rgba(224, 17, 95, 1),
+            inset 0 0 25px rgba(224, 17, 95, 0.8),
+            0 0 60px rgba(155, 17, 30, 0.7);
+    }
+}
+
+/* Легендарная рамка (уровень 35) */
+.profile-avatar.frame-35 {
+    border: 4px solid #ffd700;
+    box-shadow: 
+        0 0 35px rgba(255, 215, 0, 0.9),
+        inset 0 0 25px rgba(255, 215, 0, 0.7),
+        0 0 60px rgba(255, 107, 0, 0.6),
+        0 0 90px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(135deg, #ff6b00, #ffd700, #ffed4e, #ffd700, #ff6b00);
+    background-size: 200% 200%;
+    animation: legendaryRadiance 3s ease-in-out infinite, gradientShift 5s ease infinite;
+}
+
+@keyframes legendaryRadiance {
+    0%, 100% {
+        box-shadow: 
+            0 0 35px rgba(255, 215, 0, 0.9),
+            inset 0 0 25px rgba(255, 215, 0, 0.7);
+    }
+    50% {
+        box-shadow: 
+            0 0 50px rgba(255, 215, 0, 1),
+            inset 0 0 35px rgba(255, 215, 0, 0.9),
+            0 0 80px rgba(255, 107, 0, 0.8),
+            0 0 120px rgba(255, 215, 0, 0.6);
+    }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Уголок с названием рамки */
+.profile-avatar.framed::after {
+    content: attr(data-frame-name);
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    background: linear-gradient(135deg, #ff6b00, #ff8c00);
+    color: #fff;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+/* Специфичные цвета для разных рамок */
+.profile-avatar.frame-5::after { background: linear-gradient(135deg, #8b4513, #cd7f32); }
+.profile-avatar.frame-10::after { background: linear-gradient(135deg, #808080, #c0c0c0); }
+.profile-avatar.frame-15::after { background: linear-gradient(135deg, #daa520, #ffd700); }
+.profile-avatar.frame-20::after { background: linear-gradient(135deg, #a8a9ad, #e5e4e2); color: #333; }
+.profile-avatar.frame-25::after { background: linear-gradient(135deg, #00bfff, #b9f2ff); color: #000; }
+.profile-avatar.frame-30::after { background: linear-gradient(135deg, #9b111e, #e0115f); }
+.profile-avatar.frame-35::after { 
+    background: linear-gradient(135deg, #ff6b00, #ffd700);
+    animation: legendaryLabel 2s ease-in-out infinite;
+}
+
+@keyframes legendaryLabel {
+    0%, 100% { box-shadow: 0 2px 8px rgba(255, 215, 0, 0.6); }
+    50% { box-shadow: 0 2px 12px rgba(255, 215, 0, 1); }
+}

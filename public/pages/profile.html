@@ -1,0 +1,1075 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - Mone Drop</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .profile-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Верхняя секция с информацией */
+        .profile-header {
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff6b00, #00d4ff, #ff6b00, transparent);
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b00, #ff8c00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.4);
+            border: 3px solid rgba(255, 107, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+        }
+
+        .profile-id {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b00;
+            text-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* Баланс карточка */
+        .balance-card {
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .balance-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .balance-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 107, 0, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .balance-amount {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ff6b00;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
+        }
+
+        .balance-label {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-deposit {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #ff6b00, #ff8c00);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(255, 107, 0, 0.4);
+        }
+
+        .btn-deposit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 107, 0, 0.6);
+        }
+
+        /* Лучший дроп */
+        .best-drop-card {
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .best-drop-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffd700, #ff6b00, #ffd700);
+        }
+
+        .best-drop-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffd700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .best-drop-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .best-drop-image {
+            width: 150px;
+            height: 150px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .best-drop-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .best-drop-info {
+            flex: 1;
+        }
+
+        .best-drop-name {
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .best-drop-price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00ff88;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+
+        .best-drop-date {
+            font-size: 14px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .no-best-drop {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+
+        /* Инвентарь */
+        .inventory-section {
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, #ff6b00, #00d4ff);
+            border-radius: 2px;
+        }
+
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .inventory-item {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .inventory-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 107, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.2);
+        }
+
+        .inventory-item-image {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .inventory-item-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .inventory-item-name {
+            font-size: 13px;
+            color: #fff;
+            margin-bottom: 8px;
+            font-weight: 500;
+            min-height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.3;
+        }
+
+        .inventory-item-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #00ff88;
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+        }
+
+        .inventory-item-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-sell, .btn-withdraw {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-sell {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+        }
+
+        .btn-sell:hover {
+            background: linear-gradient(135deg, #ff6666, #ff4444);
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-withdraw {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+        }
+
+        .btn-withdraw:hover {
+            background: linear-gradient(135deg, #33ddff, #00d4ff);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .empty-inventory {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+            font-size: 18px;
+            grid-column: 1 / -1;
+        }
+
+        .empty-inventory-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        /* Уведомления */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-weight: bold;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, #00ff88, #00cc66);
+            color: #000;
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: #fff;
+        }
+
+        .notification.info {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #000;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .balance-card {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .best-drop-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .inventory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .inventory-item-buttons {
+                flex-direction: column;
+            }
+        }
+        /* ===== РАМКИ В ПРОФИЛЕ ===== */
+.profile-frames {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.frames-label {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.frames-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 40px;
+}
+
+.frame-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    animation: frameAppear 0.5s ease;
+}
+
+@keyframes frameAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.frame-badge.bronze {
+    background: linear-gradient(135deg, #cd7f32, #8b4513);
+    color: #fff;
+    border: 1px solid #cd7f32;
+    box-shadow: 0 0 10px rgba(205, 127, 50, 0.4);
+}
+
+.frame-badge.silver {
+    background: linear-gradient(135deg, #c0c0c0, #808080);
+    color: #fff;
+    border: 1px solid #c0c0c0;
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.4);
+}
+
+.frame-badge.gold {
+    background: linear-gradient(135deg, #ffd700, #daa520);
+    color: #000;
+    border: 1px solid #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.frame-badge.platinum {
+    background: linear-gradient(135deg, #e5e4e2, #a8a9ad);
+    color: #000;
+    border: 1px solid #e5e4e2;
+    box-shadow: 0 0 15px rgba(229, 228, 226, 0.5);
+}
+
+.frame-badge.diamond {
+    background: linear-gradient(135deg, #b9f2ff, #00bfff);
+    color: #000;
+    border: 1px solid #b9f2ff;
+    box-shadow: 0 0 20px rgba(185, 242, 255, 0.6);
+}
+
+.frame-badge.ruby {
+    background: linear-gradient(135deg, #e0115f, #9b111e);
+    color: #fff;
+    border: 1px solid #e0115f;
+    box-shadow: 0 0 20px rgba(224, 17, 95, 0.6);
+}
+
+.frame-badge.legendary {
+    background: linear-gradient(135deg, #ff6b00, #ffd700, #ff6b00);
+    color: #000;
+    border: 1px solid #ffd700;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    animation: legendaryGlow 2s ease-in-out infinite;
+}
+
+@keyframes legendaryGlow {
+    0%, 100% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.8); }
+    50% { box-shadow: 0 0 40px rgba(255, 215, 0, 1); }
+}
+
+.no-frames {
+    color: #666;
+    font-size: 13px;
+    font-style: italic;
+}
+/* ===== КНОПКИ РАМОК ===== */
+.frame-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    animation: frameAppear 0.5s ease;
+    position: relative;
+}
+
+.frame-badge button {
+    margin-left: 10px;
+    padding: 4px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.frame-badge .btn-equip {
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.frame-badge .btn-equip:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+.frame-badge .btn-equipped {
+    background: rgba(0, 255, 136, 0.4);
+    color: #000;
+    cursor: default;
+}
+
+.frame-badge .btn-unequip {
+    background: rgba(255, 68, 68, 0.4);
+    color: #fff;
+    margin-left: 5px;
+}
+
+.frame-badge .btn-unequip:hover {
+    background: rgba(255, 68, 68, 0.6);
+}
+
+/* Цвета рамок */
+.frame-badge.bronze {
+    background: linear-gradient(135deg, #cd7f32, #8b4513);
+    color: #fff;
+    border: 1px solid #cd7f32;
+    box-shadow: 0 0 10px rgba(205, 127, 50, 0.4);
+}
+
+.frame-badge.silver {
+    background: linear-gradient(135deg, #c0c0c0, #808080);
+    color: #fff;
+    border: 1px solid #c0c0c0;
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.4);
+}
+
+.frame-badge.gold {
+    background: linear-gradient(135deg, #ffd700, #daa520);
+    color: #000;
+    border: 1px solid #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.frame-badge.platinum {
+    background: linear-gradient(135deg, #e5e4e2, #a8a9ad);
+    color: #000;
+    border: 1px solid #e5e4e2;
+    box-shadow: 0 0 15px rgba(229, 228, 226, 0.5);
+}
+
+.frame-badge.diamond {
+    background: linear-gradient(135deg, #b9f2ff, #00bfff);
+    color: #000;
+    border: 1px solid #b9f2ff;
+    box-shadow: 0 0 20px rgba(185, 242, 255, 0.6);
+}
+
+.frame-badge.ruby {
+    background: linear-gradient(135deg, #e0115f, #9b111e);
+    color: #fff;
+    border: 1px solid #e0115f;
+    box-shadow: 0 0 20px rgba(224, 17, 95, 0.6);
+}
+
+.frame-badge.legendary {
+    background: linear-gradient(135deg, #ff6b00, #ffd700, #ff6b00);
+    color: #000;
+    border: 1px solid #ffd700;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    animation: legendaryGlow 2s ease-in-out infinite;
+}
+    </style>
+</head>
+<link rel="stylesheet" href="/css/frames.css">
+<body>
+    <!-- Единый хедер -->
+    <div class="header-container" ></div>
+
+    <div class="profile-container">
+        <!-- Информация о пользователе -->
+      <!-- Информация о пользователе -->
+<div class="profile-header">
+    <div class="profile-avatar" id="profileAvatar">
+        <span>?</span>
+    </div>
+    <div class="profile-info">
+        <h1 class="profile-name" id="profileName">Загрузка...</h1>
+        <div class="profile-id" id="profileId">ID: ---</div>
+        
+        <!-- Рамки -->
+<div class="profile-frames" id="profileFrames">
+    <div class="frames-label">Полученные рамки:</div>
+    <div class="frames-list" id="framesList">
+        <span class="no-frames">Пока нет рамок</span>
+    </div>
+</div>
+        
+        <div class="profile-stats">
+            <div class="stat-item">
+                <div class="stat-value" id="statItems">0</div>
+                <div class="stat-label">Предметов</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="statCases">0</div>
+                <div class="stat-label">Кейсов открыто</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-value" id="statTotalValue">0 mon</div>
+                <div class="stat-label">Общая стоимость</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Баланс -->
+        <div class="balance-card">
+            <div class="balance-info">
+                <div class="balance-icon">💰</div>
+                <div>
+                    <div class="balance-label">Ваш баланс</div>
+                    <div class="balance-amount" id="profileBalance">0.00  mon</div>
+                </div>
+            </div>
+            <button class="btn-deposit" onclick="showNotification('Система пополнения в разработке', 'info')">
+                Пополнить
+            </button>
+        </div>
+
+        <!-- Лучший дроп -->
+        <div class="best-drop-card">
+            <div class="best-drop-title">
+                🏆 Лучший дроп
+            </div>
+            <div id="bestDropContent">
+                <div class="no-best-drop">
+                    <div style="font-size: 48px; margin-bottom: 10px;">📦</div>
+                    <div>Пока нет дропов</div>
+                    <div style="font-size: 14px; margin-top: 10px;">Откройте кейсы, чтобы получить скины!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Инвентарь -->
+        <div class="inventory-section">
+            <h2 class="section-title">Ваш инвентарь</h2>
+            <div class="inventory-grid" id="inventoryGrid">
+                <div class="empty-inventory">
+                    <div class="empty-inventory-icon">📦</div>
+                    <div>Инвентарь пуст</div>
+                    <div style="font-size: 14px; margin-top: 10px;">Откройте кейсы, чтобы получить скины!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { auth } from '/js/auth.js';
+// Определение типа рамки по уровню
+function getFrameType(level) {
+    const frameTypes = {
+        5:  { name: 'Бронзовая', class: 'bronze', icon: '🥉' },
+        10: { name: 'Серебряная', class: 'silver', icon: '🥈' },
+        15: { name: 'Золотая', class: 'gold', icon: '' },
+        20: { name: 'Платиновая', class: 'platinum', icon: '💠' },
+        25: { name: 'Алмазная', class: 'diamond', icon: '' },
+        30: { name: 'Рубиновая', class: 'ruby', icon: '❤️' },
+        35: { name: 'Легендарная', class: 'legendary', icon: '🏆' }
+    };
+    
+    return frameTypes[level] || { name: `Уровень ${level}`, class: 'bronze', icon: '🎖️' };
+}
+        // Загрузка данных профиля
+        async function loadProfile() {
+            if (!auth.isAuthenticated()) {
+                window.location.href = '/login';
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/auth/me', {
+                    headers: { 'Authorization': `Bearer ${auth.token}` }
+                });
+                const data = await res.json();
+
+                if (!data.user) {
+                    window.location.href = '/login';
+                    return;
+                }
+// Применить рамку
+window.equipFrame = async function(level) {
+    try {
+        const res = await fetch('/api/auth/equip-frame', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auth.token}`
+            },
+            body: JSON.stringify({ level })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            showNotification(`Рамка применена!`, 'success');
+            loadProfile(); // Перезагружаем профиль
+        } else {
+            showNotification(data.error, 'error');
+        }
+    } catch (err) {
+        console.error('Ошибка применения рамки:', err);
+        showNotification('Ошибка сети', 'error');
+    }
+};
+
+// Снять рамку
+window.unequipFrame = async function() {
+    try {
+        const res = await fetch('/api/auth/unequip-frame', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${auth.token}`
+            }
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            showNotification(`Рамка снята`, 'success');
+            loadProfile();
+        } else {
+            showNotification(data.error, 'error');
+        }
+    } catch (err) {
+        console.error('Ошибка снятия рамки:', err);
+        showNotification('Ошибка сети', 'error');
+    }
+};
+                // Обновляем информацию о пользователе
+                document.getElementById('profileName').textContent = data.user.username;
+                document.getElementById('profileId').textContent = `ID: ${data.user.id}`;
+                document.getElementById('profileBalance').textContent = 
+                    data.user.balance.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '  mon';
+                
+                
+
+              // ===== ОТОБРАЖЕНИЕ РАМОК С КНОПКАМИ =====
+const framesList = document.getElementById('framesList');
+const frames = data.user.frames || [];
+const equippedFrame = data.user.equippedFrame;
+
+if (frames.length === 0) {
+    framesList.innerHTML = '<span class="no-frames">Пока нет рамок. Забирай награды на странице уровней!</span>';
+} else {
+    framesList.innerHTML = frames.map(frame => {
+        const frameType = getFrameType(frame.level);
+        const isEquipped = equippedFrame === frame.level;
+        
+        let buttonHtml = '';
+        if (isEquipped) {
+            buttonHtml = `
+                <button class="btn-equipped" disabled>Применено</button>
+                <button class="btn-unequip" onclick="unequipFrame()">Снять</button>
+            `;
+        } else {
+            buttonHtml = `<button class="btn-equip" onclick="equipFrame(${frame.level})">Применить</button>`;
+        }
+        
+        return `
+            <div class="frame-badge ${frameType.class}">
+                ${frameType.icon} ${frameType.name} (Ур. ${frame.level})
+                ${buttonHtml}
+            </div>
+        `;
+    }).join('');
+}
+// ===== АВАТАР ИЗ STEAM С РАМКОЙ =====
+const avatarEl = document.getElementById('profileAvatar');
+// equippedFrame уже объявлен выше в блоке рамок, не объявляем снова
+
+if (data.user.avatar && data.user.avatar !== '') {
+    let frameClass = '';
+    let frameName = '';
+    
+    if (equippedFrame) {
+        frameClass = 'frame-' + equippedFrame;
+        const frameTypes = {
+            5: 'Бронзовая',
+            10: 'Серебряная',
+            15: 'Золотая',
+            20: 'Платиновая',
+            25: 'Алмазная',
+            30: 'Рубиновая',
+            35: 'Легендарная'
+        };
+        frameName = frameTypes[equippedFrame] || '';
+    }
+    
+    avatarEl.className = 'profile-avatar ' + frameClass + (equippedFrame ? ' framed' : '');
+    avatarEl.setAttribute('data-frame-name', frameName);
+    
+    avatarEl.innerHTML = '<img src="' + data.user.avatar + '" alt="' + data.user.username + '" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">';
+} else {
+    avatarEl.className = 'profile-avatar';
+    avatarEl.removeAttribute('data-frame-name');
+    avatarEl.innerHTML = '<span>' + data.user.username.charAt(0).toUpperCase() + '</span>';
+}
+                // Статистика
+                const stats = data.user.stats || { casesOpened: 0, totalSpent: 0, bestDrop: null };
+                document.getElementById('statCases').textContent = stats.casesOpened || 0;
+
+                // Загружаем инвентарь
+                loadInventory(data.user.inventory || [], stats.bestDrop);
+
+            } catch (err) {
+                console.error('Ошибка загрузки профиля:', err);
+                showNotification('Ошибка загрузки профиля', 'error');
+            }
+        }
+
+        // Загрузка инвентаря
+        function loadInventory(inventory, bestDrop) {
+            const grid = document.getElementById('inventoryGrid');
+            
+            if (inventory.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-inventory">
+                        <div class="empty-inventory-icon">📦</div>
+                        <div>Инвентарь пуст</div>
+                        <div style="font-size: 14px; margin-top: 10px;">Откройте кейсы, чтобы получить скины!</div>
+                    </div>
+                `;
+            } else {
+                // Обновляем статистику
+                document.getElementById('statItems').textContent = inventory.length;
+                const totalValue = inventory.reduce((sum, item) => sum + item.price, 0);
+                document.getElementById('statTotalValue').textContent = 
+                    totalValue.toLocaleString('ru-RU') + '  mon';
+
+                // Отображаем предметы
+                grid.innerHTML = inventory.map(item => `
+                    <div class="inventory-item">
+                        <div class="inventory-item-image">
+                            ${item.image ? 
+                                `<img src="${item.image}" alt="${item.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                 <div style="display:none; font-size: 48px;">🔫</div>` : 
+                                `<div style="font-size: 48px;">🔫</div>`
+                            }
+                        </div>
+                        <div class="inventory-item-name">${item.name}</div>
+                        <div class="inventory-item-price">${item.price.toFixed(2)}  mon</div>
+                        <div class="inventory-item-buttons">
+                            <button class="btn-sell" onclick="sellItem(${item.uniqueId}, ${item.price})">
+                                Продать
+                            </button>
+                            <button class="btn-withdraw" onclick="withdrawItem('${item.name}')">
+                                Вывести
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Отображаем лучший дроп
+            loadBestDrop(bestDrop);
+        }
+
+        // Отображение лучшего дропа
+        function loadBestDrop(bestDrop) {
+            const container = document.getElementById('bestDropContent');
+            
+            if (!bestDrop) {
+                container.innerHTML = `
+                    <div class="no-best-drop">
+                        <div style="font-size: 48px; margin-bottom: 10px;">📦</div>
+                        <div>Пока нет дропов</div>
+                        <div style="font-size: 14px; margin-top: 10px;">Откройте кейсы, чтобы получить скины!</div>
+                    </div>
+                `;
+                return;
+            }
+
+            const date = new Date(bestDrop.date).toLocaleDateString('ru-RU');
+            
+            container.innerHTML = `
+                <div class="best-drop-content">
+                    <div class="best-drop-image">
+                        ${bestDrop.image ? 
+                            `<img src="${bestDrop.image}" alt="${bestDrop.name}">` : 
+                            `<div style="font-size: 64px;">🔫</div>`
+                        }
+                    </div>
+                    <div class="best-drop-info">
+                        <div class="best-drop-name">${bestDrop.name}</div>
+                        <div class="best-drop-price">${bestDrop.price.toLocaleString('ru-RU')}  mon</div>
+                        <div class="best-drop-date">Получен: ${date}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Продажа предмета
+        window.sellItem = async function(uniqueId, price) {
+            if (!confirm(`Продать скин за ${price.toFixed(2)}  mon?`)) return;
+
+            try {
+                const res = await fetch('/api/auth/sell-skin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${auth.token}`
+                    },
+                    body: JSON.stringify({ uniqueId })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    auth.user.balance = data.balance;
+                    auth.user.inventory = data.inventory;
+                    localStorage.setItem('user', JSON.stringify(auth.user));
+                    auth.updateUI();
+                    
+                    loadProfile();
+                    
+                    showNotification(`Скин продан за ${price.toFixed(2)}  mon`, 'success');
+                } else {
+                    throw new Error(data.error);
+                }
+            } catch (err) {
+                console.error('Ошибка продажи:', err);
+                showNotification('Ошибка продажи скина', 'error');
+            }
+        };
+
+        // Вывод предмета (заглушка)
+        window.withdrawItem = function(itemName) {
+            showNotification('Система вывода в разработке', 'info');
+        };
+
+        // Уведомления
+        function showNotification(message, type = 'info') {
+            const notif = document.createElement('div');
+            notif.className = `notification ${type}`;
+            notif.textContent = message;
+            document.body.appendChild(notif);
+            
+            setTimeout(() => {
+                notif.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notif.remove(), 300);
+            }, 3000);
+        }
+
+        // Загружаем профиль при открытии страницы
+        document.addEventListener('DOMContentLoaded', loadProfile);
+    </script>
+</body>
+</html>

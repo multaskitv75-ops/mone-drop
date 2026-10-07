@@ -1,0 +1,852 @@
+[
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 47,
+      "name": "P250 | Nuclear Threat",
+      "price": 7500,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/47.avif",
+      "uniqueId": 1791027602807.1965,
+      "wonAt": "2026-10-03T11:40:02.807Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:40:02.820Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 47,
+      "name": "P250 | Nuclear Threat",
+      "price": 7500,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/47.avif",
+      "uniqueId": 1791027602807.1965,
+      "wonAt": "2026-10-03T11:40:02.807Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:40:02.808Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 41,
+      "name": "AK-47 | Redline",
+      "price": 3200,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/41.avif",
+      "uniqueId": 1791027600900.3076,
+      "wonAt": "2026-10-03T11:40:00.900Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:40:00.911Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 41,
+      "name": "AK-47 | Redline",
+      "price": 3200,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/41.avif",
+      "uniqueId": 1791027600900.3076,
+      "wonAt": "2026-10-03T11:40:00.900Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:40:00.901Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 35,
+      "name": "AWP | Worm God",
+      "price": 1500,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/35.avif",
+      "uniqueId": 1791027599447.7974,
+      "wonAt": "2026-10-03T11:39:59.447Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:59.461Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 35,
+      "name": "AWP | Worm God",
+      "price": 1500,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/35.avif",
+      "uniqueId": 1791027599447.7974,
+      "wonAt": "2026-10-03T11:39:59.447Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:59.448Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 41,
+      "name": "AK-47 | Redline",
+      "price": 3200,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/41.avif",
+      "uniqueId": 1791027597598.1243,
+      "wonAt": "2026-10-03T11:39:57.598Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:57.610Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 41,
+      "name": "AK-47 | Redline",
+      "price": 3200,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/41.avif",
+      "uniqueId": 1791027597598.1243,
+      "wonAt": "2026-10-03T11:39:57.598Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:57.598Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 37,
+      "name": "MP7 | Skulls",
+      "price": 1900,
+      "rarity": "milspec",
+      "icon": "",
+      "image": "/images/skins/37.avif",
+      "uniqueId": 1791027596217.6177,
+      "wonAt": "2026-10-03T11:39:56.217Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:56.227Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 37,
+      "name": "MP7 | Skulls",
+      "price": 1900,
+      "rarity": "milspec",
+      "icon": "",
+      "image": "/images/skins/37.avif",
+      "uniqueId": 1791027596217.6177,
+      "wonAt": "2026-10-03T11:39:56.217Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:56.217Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 37,
+      "name": "MP7 | Skulls",
+      "price": 1900,
+      "rarity": "milspec",
+      "icon": "",
+      "image": "/images/skins/37.avif",
+      "uniqueId": 1791027594695.2002,
+      "wonAt": "2026-10-03T11:39:54.695Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:54.707Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 37,
+      "name": "MP7 | Skulls",
+      "price": 1900,
+      "rarity": "milspec",
+      "icon": "",
+      "image": "/images/skins/37.avif",
+      "uniqueId": 1791027594695.2002,
+      "wonAt": "2026-10-03T11:39:54.695Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:54.696Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 38,
+      "name": "UMP-45 | Carbon Fiber",
+      "price": 2100,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/38.avif",
+      "uniqueId": 1791027593228.2488,
+      "wonAt": "2026-10-03T11:39:53.228Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:53.240Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 38,
+      "name": "UMP-45 | Carbon Fiber",
+      "price": 2100,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/38.avif",
+      "uniqueId": 1791027593228.2488,
+      "wonAt": "2026-10-03T11:39:53.228Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:53.228Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 45,
+      "name": "USP-S | Orion",
+      "price": 6000,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/45.avif",
+      "uniqueId": 1791027591664.7183,
+      "wonAt": "2026-10-03T11:39:51.664Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:51.677Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 45,
+      "name": "USP-S | Orion",
+      "price": 6000,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/45.avif",
+      "uniqueId": 1791027591664.7183,
+      "wonAt": "2026-10-03T11:39:51.664Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:51.665Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 35,
+      "name": "AWP | Worm God",
+      "price": 1500,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/35.avif",
+      "uniqueId": 1791027589907.093,
+      "wonAt": "2026-10-03T11:39:49.907Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:49.922Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 35,
+      "name": "AWP | Worm God",
+      "price": 1500,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/35.avif",
+      "uniqueId": 1791027589907.093,
+      "wonAt": "2026-10-03T11:39:49.907Z",
+      "caseName": "WallStrike",
+      "casePrice": 3300
+    },
+    "caseName": "WallStrike",
+    "timestamp": "2026-10-03T11:39:49.907Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 15,
+      "name": "MP7 | Army Recon",
+      "price": 125,
+      "rarity": "consumer",
+      "icon": "🔫",
+      "image": "/images/skins/15.avif",
+      "uniqueId": 1791027577767.6575,
+      "wonAt": "2026-10-03T11:39:37.767Z",
+      "caseName": "Qwantum",
+      "casePrice": 59
+    },
+    "caseName": "Qwantum",
+    "timestamp": "2026-10-03T11:39:37.779Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 15,
+      "name": "MP7 | Army Recon",
+      "price": 125,
+      "rarity": "consumer",
+      "icon": "🔫",
+      "image": "/images/skins/15.avif",
+      "uniqueId": 1791027577767.6575,
+      "wonAt": "2026-10-03T11:39:37.767Z",
+      "caseName": "Qwantum",
+      "casePrice": 59
+    },
+    "caseName": "Qwantum",
+    "timestamp": "2026-10-03T11:39:37.768Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 34,
+      "name": "M4A1-S | Boreal Forest",
+      "price": 1300,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/34.avif",
+      "uniqueId": 1791027554141.7815,
+      "wonAt": "2026-10-03T11:39:14.141Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:39:14.153Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 34,
+      "name": "M4A1-S | Boreal Forest",
+      "price": 1300,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/34.avif",
+      "uniqueId": 1791027554141.7815,
+      "wonAt": "2026-10-03T11:39:14.141Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:39:14.142Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 41,
+      "name": "AK-47 | Redline",
+      "price": 3200,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/41.avif",
+      "uniqueId": 1791027551825.2087,
+      "wonAt": "2026-10-03T11:39:11.825Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:39:11.837Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 41,
+      "name": "AK-47 | Redline",
+      "price": 3200,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/41.avif",
+      "uniqueId": 1791027551825.2087,
+      "wonAt": "2026-10-03T11:39:11.825Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:39:11.825Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 47,
+      "name": "P250 | Nuclear Threat",
+      "price": 7500,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/47.avif",
+      "uniqueId": 1791027543479.947,
+      "wonAt": "2026-10-03T11:39:03.479Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:39:03.489Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 47,
+      "name": "P250 | Nuclear Threat",
+      "price": 7500,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/47.avif",
+      "uniqueId": 1791027543479.947,
+      "wonAt": "2026-10-03T11:39:03.479Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:39:03.480Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 36,
+      "name": "P90 | Elite Build",
+      "price": 1700,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/36.avif",
+      "uniqueId": 1791027541970.7297,
+      "wonAt": "2026-10-03T11:39:01.970Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:39:01.983Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 36,
+      "name": "P90 | Elite Build",
+      "price": 1700,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/36.avif",
+      "uniqueId": 1791027541970.7297,
+      "wonAt": "2026-10-03T11:39:01.970Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:39:01.970Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 40,
+      "name": "Galil AR | Tuxedo",
+      "price": 2700,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/40.avif",
+      "uniqueId": 1791027540307.0571,
+      "wonAt": "2026-10-03T11:39:00.307Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:39:00.320Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 40,
+      "name": "Galil AR | Tuxedo",
+      "price": 2700,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/40.avif",
+      "uniqueId": 1791027540307.0571,
+      "wonAt": "2026-10-03T11:39:00.307Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:39:00.307Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 37,
+      "name": "MP7 | Skulls",
+      "price": 1900,
+      "rarity": "milspec",
+      "icon": "",
+      "image": "/images/skins/37.avif",
+      "uniqueId": 1791027539056.3171,
+      "wonAt": "2026-10-03T11:38:59.056Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:59.067Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 37,
+      "name": "MP7 | Skulls",
+      "price": 1900,
+      "rarity": "milspec",
+      "icon": "",
+      "image": "/images/skins/37.avif",
+      "uniqueId": 1791027539056.3171,
+      "wonAt": "2026-10-03T11:38:59.056Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:59.056Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 36,
+      "name": "P90 | Elite Build",
+      "price": 1700,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/36.avif",
+      "uniqueId": 1791027537667.0388,
+      "wonAt": "2026-10-03T11:38:57.667Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:57.678Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 36,
+      "name": "P90 | Elite Build",
+      "price": 1700,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/36.avif",
+      "uniqueId": 1791027537667.0388,
+      "wonAt": "2026-10-03T11:38:57.667Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:57.668Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 42,
+      "name": "M4A4 | Red DDPAT",
+      "price": 3800,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/42.avif",
+      "uniqueId": 1791027536232.5984,
+      "wonAt": "2026-10-03T11:38:56.232Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:56.242Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 42,
+      "name": "M4A4 | Red DDPAT",
+      "price": 3800,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/42.avif",
+      "uniqueId": 1791027536232.5984,
+      "wonAt": "2026-10-03T11:38:56.232Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:56.233Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 37,
+      "name": "MP7 | Skulls",
+      "price": 1900,
+      "rarity": "milspec",
+      "icon": "",
+      "image": "/images/skins/37.avif",
+      "uniqueId": 1791027534796.8025,
+      "wonAt": "2026-10-03T11:38:54.796Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:54.810Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 37,
+      "name": "MP7 | Skulls",
+      "price": 1900,
+      "rarity": "milspec",
+      "icon": "",
+      "image": "/images/skins/37.avif",
+      "uniqueId": 1791027534796.8025,
+      "wonAt": "2026-10-03T11:38:54.796Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:54.797Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 34,
+      "name": "M4A1-S | Boreal Forest",
+      "price": 1300,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/34.avif",
+      "uniqueId": 1791027533168.8354,
+      "wonAt": "2026-10-03T11:38:53.168Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:53.179Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 34,
+      "name": "M4A1-S | Boreal Forest",
+      "price": 1300,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/34.avif",
+      "uniqueId": 1791027533168.8354,
+      "wonAt": "2026-10-03T11:38:53.168Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:53.169Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 42,
+      "name": "M4A4 | Red DDPAT",
+      "price": 3800,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/42.avif",
+      "uniqueId": 1791027530845.019,
+      "wonAt": "2026-10-03T11:38:50.845Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:50.854Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 42,
+      "name": "M4A4 | Red DDPAT",
+      "price": 3800,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/42.avif",
+      "uniqueId": 1791027530845.019,
+      "wonAt": "2026-10-03T11:38:50.845Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:50.845Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 42,
+      "name": "M4A4 | Red DDPAT",
+      "price": 3800,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/42.avif",
+      "uniqueId": 1791027529183.2168,
+      "wonAt": "2026-10-03T11:38:49.183Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:49.193Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 42,
+      "name": "M4A4 | Red DDPAT",
+      "price": 3800,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/42.avif",
+      "uniqueId": 1791027529183.2168,
+      "wonAt": "2026-10-03T11:38:49.183Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:49.183Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 45,
+      "name": "USP-S | Orion",
+      "price": 6000,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/45.avif",
+      "uniqueId": 1791027527611.1255,
+      "wonAt": "2026-10-03T11:38:47.611Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:47.622Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 45,
+      "name": "USP-S | Orion",
+      "price": 6000,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/45.avif",
+      "uniqueId": 1791027527611.1255,
+      "wonAt": "2026-10-03T11:38:47.611Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:47.612Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 38,
+      "name": "UMP-45 | Carbon Fiber",
+      "price": 2100,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/38.avif",
+      "uniqueId": 1791027526248.6213,
+      "wonAt": "2026-10-03T11:38:46.248Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:46.260Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 38,
+      "name": "UMP-45 | Carbon Fiber",
+      "price": 2100,
+      "rarity": "milspec",
+      "icon": "🔫",
+      "image": "/images/skins/38.avif",
+      "uniqueId": 1791027526248.6213,
+      "wonAt": "2026-10-03T11:38:46.248Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:46.249Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 41,
+      "name": "AK-47 | Redline",
+      "price": 3200,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/41.avif",
+      "uniqueId": 1791027524447.3518,
+      "wonAt": "2026-10-03T11:38:44.447Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:44.459Z"
+  },
+  {
+    "username": "Mone",
+    "skin": {
+      "id": 41,
+      "name": "AK-47 | Redline",
+      "price": 3200,
+      "rarity": "restricted",
+      "icon": "🔫",
+      "image": "/images/skins/41.avif",
+      "uniqueId": 1791027524447.3518,
+      "wonAt": "2026-10-03T11:38:44.447Z",
+      "caseName": "Selvador",
+      "casePrice": 2999
+    },
+    "caseName": "Selvador",
+    "timestamp": "2026-10-03T11:38:44.447Z"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "AK-47 | Redline",
+    "rarity": "classified",
+    "price": 2500,
+    "image": ""
+  },
+  {
+    "id": 2,
+    "name": "AK-47 | Vulcan",
+    "rarity": "classified",
+    "price": 12000,
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "AK-47 | Fire Serpent",
+    "rarity": "covert",
+    "price": 65000,
+    "image": ""
+  },
+  {
+    "id": 4,
+    "name": "AWP | Asiimov",
+    "rarity": "classified",
+    "price": 20000,
+    "image": ""
+  },
+  {
+    "id": 5,
+    "name": "AWP | Dragon Lore",
+    "rarity": "covert",
+    "price": 120000,
+    "image": ""
+  },
+  {
+    "id": 6,
+    "name": "M4A4 | Asiimov",
+    "rarity": "classified",
+    "price": 16000,
+    "image": ""
+  },
+  {
+    "id": 7,
+    "name": "M4A4 | Howl",
+    "rarity": "covert",
+    "price": 95000,
+    "image": ""
+  },
+  {
+    "id": 8,
+    "name": "Desert Eagle | Blaze",
+    "rarity": "restricted",
+    "price": 200000,
+    "image": ""
+  },
+  {
+    "id": 9,
+    "name": "★ Karambit | Fade",
+    "rarity": "rare",
+    "price": 450000,
+    "image": ""
+  },
+  {
+    "id": 10,
+    "name": "★ Butterfly Knife | Doppler",
+    "rarity": "rare",
+    "price": 520000,
+    "image": ""
+  }
+]

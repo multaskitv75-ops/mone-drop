@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровни - Mone Drop</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: #0a0e17;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            color: #fff;
+        }
+
+        .levels-page {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ===== РЕФЕРАЛЬНЫЙ БАННЕР ===== */
+        .referral-banner {
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            border-radius: 20px;
+            padding: 25px 35px;
+            margin-bottom: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .referral-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff6b00, #00d4ff, #ff6b00, transparent);
+        }
+
+        .referral-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .referral-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b00, #ff8c00);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.4);
+        }
+
+        .referral-text h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0 0 4px 0;
+            color: #fff;
+        }
+
+        .referral-text p {
+            font-size: 13px;
+            color: #888;
+            margin: 0;
+        }
+
+        .referral-count {
+            text-align: center;
+        }
+
+        .referral-number {
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff6b00, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .referral-label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .btn-invite {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #ff6b00, #ff8c00);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(255, 107, 0, 0.4);
+        }
+
+        .btn-invite:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 107, 0, 0.6);
+        }
+
+        /* ===== ТЕКУЩИЙ УРОВЕНЬ ===== */
+        .current-level-card {
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 35px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .current-level-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff6b00, #00d4ff, #ff6b00, transparent);
+        }
+
+        .level-number-large {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff6b00, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .level-title {
+            font-size: 16px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+
+        .xp-progress-container {
+            max-width: 500px;
+            margin: 0 auto 15px;
+        }
+
+        .xp-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        .xp-bar-large {
+            width: 100%;
+            height: 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+        }
+
+        .xp-progress-large {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b00, #ffd700);
+            border-radius: 8px;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+            position: relative;
+        }
+
+        .xp-progress-large::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .next-reward {
+            font-size: 15px;
+            color: #ffd700;
+            margin-top: 12px;
+        }
+
+        /* ===== РАЗДЕЛЫ УРОВНЕЙ ===== */
+        .section-block {
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 20px;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .section-block.locked {
+            opacity: 0.35;
+            pointer-events: none;
+            filter: grayscale(0.6);
+        }
+
+        .section-block.locked::after {
+            content: '🔒 ЗАБЛОКИРОВАНО';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: #ff4444;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            z-index: 10;
+            border: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .section-icon {
+            font-size: 24px;
+        }
+
+        .section-collection {
+            font-size: 13px;
+            color: #ff6b00;
+            background: rgba(255, 107, 0, 0.1);
+            padding: 5px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 107, 0, 0.3);
+        }
+
+        .levels-row {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 10px 5px 15px;
+            scrollbar-width: thin;
+            scrollbar-color: #ff6b00 rgba(0, 0, 0, 0.3);
+        }
+
+        .levels-row::-webkit-scrollbar { height: 6px; }
+        .levels-row::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); border-radius: 3px; }
+        .levels-row::-webkit-scrollbar-thumb { background: #ff6b00; border-radius: 3px; }
+
+        /* ===== КАРТОЧКА УРОВНЯ ===== */
+        .level-card {
+            min-width: 150px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 18px 12px 15px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .level-card:hover:not(.locked-level) {
+            transform: translateY(-4px);
+            border-color: rgba(255, 107, 0, 0.4);
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.15);
+        }
+
+        .level-card.completed {
+            border-color: rgba(255, 107, 0, 0.4);
+            background: rgba(255, 107, 0, 0.04);
+        }
+
+        .level-card.current {
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.06);
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.25);
+            animation: currentPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes currentPulse {
+            0%, 100% { box-shadow: 0 0 25px rgba(0, 212, 255, 0.25); }
+            50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.4); }
+        }
+
+        .level-card.locked-level {
+            opacity: 0.45;
+            filter: grayscale(0.6);
+        }
+
+        .level-dot {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 900;
+            color: #555;
+            margin: 0 auto 10px;
+            position: relative;
+        }
+
+        .level-card.completed .level-dot {
+            background: linear-gradient(135deg, #ff6b00, #ff8c00);
+            border-color: #ff6b00;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+        }
+
+        .level-card.current .level-dot {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border-color: #00d4ff;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .level-check {
+            position: absolute;
+            top: -4px; right: -4px;
+            width: 20px; height: 20px;
+            background: #00ff88;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #000;
+            font-weight: bold;
+            box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+        }
+
+        .level-reward-icon {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .level-reward-text {
+            font-size: 12px;
+            color: #ffd700;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .level-reward-sub {
+            font-size: 10px;
+            color: #888;
+            line-height: 1.3;
+        }
+
+        /* ===== МОДАЛЬНОЕ ОКНО ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-content {
+            background: rgba(13, 17, 23, 0.95);
+            border: 1px solid rgba(255, 107, 0, 0.4);
+            border-radius: 20px;
+            padding: 35px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: modalAppear 0.3s ease;
+        }
+
+        @keyframes modalAppear {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px; right: 18px;
+            font-size: 26px;
+            color: #888;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover { color: #ff6b00; }
+
+        .modal-level-number {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff6b00, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .modal-reward {
+            font-size: 20px;
+            color: #00ff88;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .modal-description {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        /* ===== УВЕДОМЛЕНИЯ ===== */
+        .notification {
+            position: fixed;
+            top: 20px; right: 20px;
+            padding: 14px 22px;
+            border-radius: 12px;
+            font-weight: bold;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            font-size: 14px;
+        }
+
+        .notification.success { background: linear-gradient(135deg, #00ff88, #00cc66); color: #000; }
+        .notification.error { background: linear-gradient(135deg, #ff4444, #cc0000); color: #fff; }
+        .notification.info { background: linear-gradient(135deg, #00d4ff, #0099cc); color: #000; }
+
+        @keyframes slideIn {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(400px); opacity: 0; }
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 768px) {
+            .referral-banner {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .referral-info { flex-direction: column; }
+            .level-number-large { font-size: 42px; }
+            .section-header {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+            .level-card { min-width: 130px; }
+        }
+       
+.btn-claim-reward:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 136, 0.5);
+}
+
+.btn-claim-reward.claimed {
+    background: rgba(255, 255, 255, 0.1);
+    color: #00ff88;
+    cursor: default;
+    box-shadow: none;
+}
+/* ===== КНОПКА ЗАБРАТЬ ===== */
+.btn-claim-reward {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: linear-gradient(135deg, #00ff88, #00cc66);
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-weight: 800;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-claim-reward:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 136, 0.5);
+    background: linear-gradient(135deg, #00ff99, #00dd77);
+}
+
+.btn-claim-reward:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* Забранная кнопка (серая, неактивная) */
+.btn-claim-reward.claimed {
+    background: linear-gradient(135deg, #555, #444);
+    color: #888;
+    cursor: not-allowed;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-claim-reward.claimed:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Кнопка для заблокированных уровней (скрыта) */
+.btn-claim-reward.locked {
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <div class="header-container"></div>
+
+    <div class="levels-page">
+        <!-- Реферальный баннер -->
+        <div class="referral-banner">
+            <div class="referral-info">
+                <div class="referral-icon">👥</div>
+                <div class="referral-text">
+                    <h3>Приглашённые друзья</h3>
+                    <p>Каждый друг = +500 mon и +100 XP</p>
+                </div>
+            </div>
+            <div class="referral-count">
+                <div class="referral-number" id="referralCount">0</div>
+                <div class="referral-label">Приглашено</div>
+            </div>
+            <button class="btn-invite" onclick="copyReferralLink()">📋 Пригласить</button>
+        </div>
+
+        <!-- Текущий уровень -->
+        <div class="current-level-card">
+            <div class="level-number-large" id="currentLevel">1</div>
+            <div class="level-title">Текущий уровень</div>
+            <div class="xp-progress-container">
+                <div class="xp-info">
+                    <span id="currentXp">0 XP</span>
+                    <span id="xpForNext">100 XP</span>
+                </div>
+                <div class="xp-bar-large">
+                    <div class="xp-progress-large" id="xpProgress" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="next-reward" id="nextReward"> Следующая награда: 500 mon (Уровень 2)</div>
+        </div>
+
+        <!-- Разделы уровней -->
+        <div id="sectionsContainer"></div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div class="modal-overlay" id="levelModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeLevelModal()">&times;</button>
+            <div class="modal-level-number" id="modalLevel">1</div>
+            <div class="modal-reward" id="modalReward">Награда</div>
+            <div class="modal-description" id="modalDescription">Описание</div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { auth } from '/js/auth.js';
+
+        // ===== КОНФИГУРАЦИЯ =====
+        const LEVELS_PER_SECTION = 5;
+        const TOTAL_SECTIONS = 7;
+        const TOTAL_LEVELS = 35;
+
+        // Коллекции кейсов для каждого раздела
+        const sectionCollections = {
+            1: { name: 'ROBERO', icon: '🔥', cases: 'Кейсы Robero' },
+            2: { name: 'ROBERO PRO', icon: '⚡', cases: 'Кейсы Robero Pro' },
+            3: { name: 'ELITE SAILOOP', icon: '', cases: 'Кейсы Elite Sailoop' },
+            4: { name: 'ELITE SAILOOP PRO', icon: '👑', cases: 'Кейсы Elite Sailoop Pro' },
+            5: { name: 'LEGENDARY', icon: '🏆', cases: 'Кейсы Legendary' },
+            6: { name: 'MYSTIC', icon: '🔮', cases: 'Кейсы Mystic' },
+            7: { name: 'GODLIKE', icon: '⚡', cases: 'Кейсы Godlike' }
+        };
+
+     const levelRewards = {
+    1:  { reward: 'Стартовый пакет', sub: '1000 mon при регистрации', icon: '🎁' },
+    2:  { reward: '200 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    3:  { reward: '300 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    4:  { reward: '500 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    5:  { reward: '1000 mon + 2 Pride', sub: 'Бронзовая рамка', icon: '🥉' },
+    6:  { reward: '800 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    7:  { reward: '1000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    8:  { reward: '1500 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    9:  { reward: '2000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    10: { reward: '3000 mon + 2 Pride', sub: 'Серебряная рамка', icon: '🥈' },
+    11: { reward: '2500 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    12: { reward: '3000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    13: { reward: '4000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    14: { reward: '3500 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    15: { reward: '5000 mon + 2 Pride', sub: 'Золотая рамка', icon: '' },
+    16: { reward: '4500 mon + 1 Pride', sub: 'Бонус за уровень', icon: '' },
+    17: { reward: '6000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '' },
+    18: { reward: '5500 mon + 1 Pride', sub: 'Бонус за уровень', icon: '' },
+    19: { reward: '7000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '' },
+    20: { reward: '8000 mon + 2 Pride', sub: 'Платиновая рамка', icon: '💠' },
+    21: { reward: '7500 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    22: { reward: '9000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    23: { reward: '10000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    24: { reward: '9500 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    25: { reward: '12000 mon + 2 Pride', sub: 'Алмазная рамка', icon: '💎' },
+    26: { reward: '11000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    27: { reward: '13000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    28: { reward: '12500 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    29: { reward: '14000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    30: { reward: '15000 mon + 2 Pride', sub: 'Рубиновая рамка', icon: '❤️' },
+    31: { reward: '14500 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    32: { reward: '16000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    33: { reward: '17000 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    34: { reward: '16500 mon + 1 Pride', sub: 'Бонус за уровень', icon: '💰' },
+    35: { reward: '20000 mon + 2 Pride', sub: 'Легендарная рамка', icon: '🏆' }
+};
+
+function getLevelReward(level) {
+    return levelRewards[level] || { reward: `${level * 1000} mon + 1 Pride`, sub: 'Бонус', icon: '💰' };
+}
+
+        // ===== ЗАГРУЗКА ДАННЫХ =====
+      async function loadLevelsData() {
+    if (!auth.isAuthenticated()) {
+        window.location.href = '/login';
+        return;
+    }
+
+    try {
+        const res = await fetch('/api/auth/me', {
+            headers: { 'Authorization': `Bearer ${auth.token}` }
+        });
+        const data = await res.json();
+
+        if (!data.user) {
+            window.location.href = '/login';
+            return;
+        }
+
+        const user = data.user;
+        const currentLevel = user.level || 1;
+        const currentXp = user.xp || 0;
+        const referrals = user.referrals || 0;
+        const claimedRewards = user.claimedRewards || [];
+        
+        console.log('[DEBUG loadLevelsData] claimedRewards:', claimedRewards);
+
+        document.getElementById('referralCount').textContent = referrals;
+        document.getElementById('currentLevel').textContent = currentLevel;
+        
+        const xpForNext = currentLevel * 100;
+        const xpInLevel = currentXp % 100;
+        const progress = (xpInLevel / 100) * 100;
+        
+        document.getElementById('currentXp').textContent = `${currentXp} XP`;
+        document.getElementById('xpForNext').textContent = `${xpForNext} XP`;
+        document.getElementById('xpProgress').style.width = `${progress}%`;
+
+        const nextRewardLevel = [2, 5, 10, 15, 20, 25, 30, 35].find(l => l > currentLevel) || 35;
+        const nextReward = getLevelReward(nextRewardLevel);
+        document.getElementById('nextReward').textContent = 
+            `🎁 Следующая награда: ${nextReward.reward} (Уровень ${nextRewardLevel})`;
+
+        generateSections(currentLevel, claimedRewards);
+
+    } catch (err) {
+        console.error('Ошибка загрузки:', err);
+        showNotification('Ошибка загрузки', 'error');
+    }
+}
+        // ===== ГЕНЕРАЦИЯ РАЗДЕЛОВ =====
+    function generateSections(currentLevel, claimedRewards) {
+    const container = document.getElementById('sectionsContainer');
+    container.innerHTML = '';
+
+    const currentSection = Math.ceil(currentLevel / LEVELS_PER_SECTION);
+
+    for (let sectionNum = 1; sectionNum <= TOTAL_SECTIONS; sectionNum++) {
+        const section = document.createElement('div');
+        section.className = 'section-block';
+
+        const isLocked = sectionNum > currentSection;
+        if (isLocked) section.classList.add('locked');
+
+        const collection = sectionCollections[sectionNum];
+        const startLevel = (sectionNum - 1) * LEVELS_PER_SECTION + 1;
+        const endLevel = sectionNum * LEVELS_PER_SECTION;
+
+        section.innerHTML = `
+            <div class="section-header">
+                <div class="section-title">
+                    <span class="section-icon">${collection.icon}</span>
+                    Раздел ${sectionNum}: ${collection.name}
+                </div>
+                <div class="section-collection">${collection.cases}</div>
+            </div>
+            <div class="levels-row" id="levelsRow${sectionNum}"></div>
+        `;
+
+        container.appendChild(section);
+
+        const levelsRow = document.getElementById(`levelsRow${sectionNum}`);
+
+        for (let level = startLevel; level <= endLevel; level++) {
+            // ВАЖНО: передаем claimedRewards в createLevelCard
+            const levelCard = createLevelCard(level, currentLevel, claimedRewards);
+            levelsRow.appendChild(levelCard);
+        }
+    }
+}
+   
+function createLevelCard(level, currentLevel, claimedRewards) {
+    console.log(`[DEBUG createLevelCard] Level: ${level}, Current: ${currentLevel}, ClaimedRewards:`, claimedRewards);
+    
+    const card = document.createElement('div');
+    card.className = 'level-card';
+
+    const reward = getLevelReward(level);
+    const isClaimed = claimedRewards && claimedRewards.includes(level);
+    const canClaim = level <= currentLevel && !isClaimed;
+    const isLocked = level > currentLevel;
+
+    console.log(`[DEBUG] isClaimed: ${isClaimed}, canClaim: ${canClaim}, isLocked: ${isLocked}`);
+
+    if (level < currentLevel) {
+        card.classList.add('completed');
+    } else if (level === currentLevel) {
+        card.classList.add('current');
+    } else {
+        card.classList.add('locked-level');
+    }
+
+    let actionButton = '';
+    if (!isLocked) {
+        if (isClaimed) {
+            actionButton = `<button class="btn-claim-reward claimed" disabled>ЗАБРАНО</button>`;
+        } else if (canClaim) {
+            actionButton = `<button class="btn-claim-reward" onclick="claimReward(${level})">ЗАБРАТЬ</button>`;
+        }
+    }
+
+    const frameIcon = (level % 5 === 0) ? '<div style="font-size: 10px; color: #ffd700; margin-top: 2px;">🏆 Рамка</div>' : '';
+
+    card.innerHTML = `
+        <div class="level-dot">
+            ${level}
+            ${level < currentLevel ? '<div class="level-check">✓</div>' : ''}
+        </div>
+        <div class="level-reward-icon">${reward.icon}</div>
+        <div class="level-reward-text">${reward.reward}</div>
+        <div class="level-reward-sub">${reward.sub}</div>
+        ${frameIcon}
+        ${actionButton}
+    `;
+
+    card.onclick = (e) => {
+        if (!e.target.classList.contains('btn-claim-reward')) {
+            showLevelDetails(level);
+        }
+    };
+
+    return card;
+}
+        function showLevelDetails(level) {
+            const reward = getLevelReward(level);
+
+            document.getElementById('modalLevel').textContent = level;
+            document.getElementById('modalReward').textContent = `Награда: ${reward.reward}`;
+            document.getElementById('modalDescription').innerHTML = `
+                ${reward.sub}<br><br>
+                <span style="color: #888; font-size: 13px;">
+                    Раздел ${Math.ceil(level / LEVELS_PER_SECTION)} из ${TOTAL_SECTIONS}
+                </span>
+            `;
+
+            document.getElementById('levelModal').classList.add('active');
+        }
+
+        window.closeLevelModal = function() {
+            document.getElementById('levelModal').classList.remove('active');
+        };
+
+        // ===== РЕФЕРАЛЬНАЯ ССЫЛКА =====
+        window.copyReferralLink = function() {
+            const link = `${window.location.origin}/?ref=${auth.user?.id || 'user'}`;
+            navigator.clipboard.writeText(link).then(() => {
+                showNotification('Ссылка скопирована!', 'success');
+            }).catch(() => {
+                showNotification('Не удалось скопировать', 'error');
+            });
+        };
+
+        // ===== УВЕДОМЛЕНИЯ =====
+        function showNotification(message, type = 'info') {
+            const notif = document.createElement('div');
+            notif.className = `notification ${type}`;
+            notif.textContent = message;
+            document.body.appendChild(notif);
+
+            setTimeout(() => {
+                notif.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notif.remove(), 300);
+            }, 3000);
+        }
+
+        // Закрытие модалки по клику вне
+        document.getElementById('levelModal').addEventListener('click', function(e) {
+            if (e.target === this) closeLevelModal();
+        });
+
+        // Загрузка
+        document.addEventListener('DOMContentLoaded', loadLevelsData);
+        // Функция получения награды
+window.claimReward = async function(level) {
+    try {
+        const res = await fetch('/api/auth/claim-reward', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auth.token}`
+            },
+            body: JSON.stringify({ level })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            showNotification(` Получено: ${data.rewardName}!`, 'success');
+            
+            auth.user.balance = data.newBalance;
+            auth.user.pride = data.newPride;
+            auth.user.level = data.newLevel;
+            if (!auth.user.claimedRewards) auth.user.claimedRewards = [];
+            auth.user.claimedRewards.push(level);
+            
+            localStorage.setItem('user', JSON.stringify(auth.user));
+            auth.updateUI();
+            
+            loadLevelsData();
+        } else {
+            showNotification(data.error, 'error');
+        }
+    } catch (err) {
+        console.error('Ошибка получения награды:', err);
+        showNotification('Ошибка сети', 'error');
+    }
+};
+    </script>
+</body>
+</html>

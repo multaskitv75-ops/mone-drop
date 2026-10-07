@@ -1,0 +1,1382 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейс - Mone Drop</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0e14;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: rgba(15, 20, 25, 0.95);
+            border-bottom: 2px solid #ff6b00;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .header-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.5));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.8em;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .logo-title span {
+            color: #ff6b00;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7em;
+            color: #888;
+            letter-spacing: 3px;
+            margin-top: 2px;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 107, 0, 0.1);
+            border: 2px solid #ff6b00;
+            border-radius: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #ff6b00;
+            color: #000;
+        }
+
+        .balance-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .balance-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 107, 0, 0.1);
+            border: 2px solid #ff6b00;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .balance-icon {
+            font-size: 1.5em;
+        }
+
+        .balance-label {
+            font-size: 0.7em;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .balance-amount {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #ff6b00;
+        }
+
+        .login-header-btn, .register-header-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .login-header-btn {
+            background: rgba(255, 107, 0, 0.1);
+            border: 2px solid #ff6b00;
+            color: #ff6b00;
+        }
+
+        .register-header-btn {
+            background: #ff6b00;
+            color: #000;
+        }
+
+        /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+        .case-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-btn {
+            background: rgba(255, 107, 0, 0.1);
+            border: 2px solid #ff6b00;
+            color: #ff6b00;
+            padding: 12px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .back-btn:hover {
+            background: #ff6b00;
+            color: #000;
+        }
+
+        /* ===== БЛОК КЕЙСА С РУЛЕТКОЙ ===== */
+        .case-main-block {
+            background: rgba(15, 20, 25, 0.9);
+            border: 2px solid #2a3f54;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Инфо о кейсе (показывается по умолчанию) */
+        .case-info-view {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .case-image-large {
+            width: 280px;
+            height: 280px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 30px rgba(255, 107, 0, 0.6));
+            animation: caseFloat 3s ease-in-out infinite;
+            margin-bottom: 30px;
+        }
+
+        @keyframes caseFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .case-title {
+            font-size: 2.5em;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
+            text-align: center;
+        }
+
+        .case-price {
+            font-size: 2em;
+            color: #ff6b00;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .case-items-count {
+            font-size: 1.1em;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .case-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .open-btn-large {
+            background: linear-gradient(135deg, #ff6b00, #ff8c00);
+            color: #000;
+            border: none;
+            padding: 20px 60px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 107, 0, 0.4);
+        }
+
+        .open-btn-large:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.6);
+        }
+
+        .open-btn-large:disabled {
+            background: #555;
+            color: #999;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .quick-open-btn {
+            background: linear-gradient(135deg, #2a3f54, #1a2f3e);
+            color: #fff;
+            border: 2px solid #00ff88;
+            padding: 20px 60px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+
+        .quick-open-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        .quick-open-btn:disabled {
+            background: #555;
+            color: #999;
+            border-color: #555;
+            cursor: not-allowed;
+        }
+
+        /* ===== РУЛЕТКА (появляется поверх инфо) ===== */
+        .roulette-view {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .roulette-view.active {
+            display: flex;
+        }
+
+        .case-info-view.hidden {
+            display: none;
+        }
+
+        .roulette-title {
+            font-size: 2em;
+            color: #ff6b00;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .roulette-box {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 220px;
+            background: rgba(10, 14, 20, 0.95);
+            border: 3px solid #ff6b00;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 0 40px rgba(255, 107, 0, 0.3);
+        }
+
+        .roulette-center-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #ff6b00;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 0 20px #ff6b00;
+        }
+
+        .roulette-items {
+            display: flex;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            gap: 0;
+        }
+
+        .roulette-item {
+            width: 180px;
+            flex-shrink: 0;
+            height: 100%;
+            border-right: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background: rgba(15, 20, 25, 0.95);
+            box-sizing: border-box;
+        }
+
+        .roulette-item img {
+            max-width: 90%;
+            max-height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .roulette-item-name {
+            font-size: 0.85em;
+            color: #fff;
+            text-align: center;
+            word-wrap: break-word;
+            max-width: 180px;
+            line-height: 1.3;
+        }
+
+        .roulette-item-price {
+            font-size: 1em;
+            color: #00ff88;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        /* ===== РЕЗУЛЬТАТ ===== */
+        .roulette-result {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+            animation: fadeIn 0.5s;
+        }
+
+        .roulette-result.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-skin-card {
+            background: linear-gradient(135deg, #1a2f3e, #0f1419);
+            border: 3px solid;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            box-shadow: 0 0 40px rgba(255, 107, 0, 0.5);
+        }
+
+        .result-skin-image {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .result-skin-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .result-skin-name {
+            font-size: 1.5em;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .result-skin-price {
+            font-size: 1.8em;
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .result-btn {
+            padding: 18px 50px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .result-btn.take {
+            background: linear-gradient(135deg, #ff6b00, #ff8c00);
+            color: #000;
+        }
+
+        .result-btn.sell {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: #000;
+        }
+
+        .result-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ===== СЕТКА СКИНОВ ===== */
+        .case-skins-section {
+            background: rgba(15, 20, 25, 0.6);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid #2a3f54;
+        }
+
+        .case-skins-title {
+            font-size: 1.8em;
+            color: #ff6b00;
+            margin-bottom: 25px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .case-skins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .skin-card {
+            background: rgba(15, 20, 25, 0.9);
+            border: 1px solid #2a3f54;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .skin-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b00;
+            box-shadow: 0 5px 20px rgba(255, 107, 0, 0.3);
+        }
+
+        .skin-image {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .skin-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .skin-name {
+            color: #fff;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .skin-price {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        /* ===== УВЕДОМЛЕНИЯ ===== */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: bold;
+            z-index: 10000;
+            animation: slideIn 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: #000;
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+        }
+
+        .notification.info {
+            background: linear-gradient(135deg, #ff6b00, #ff8c00);
+            color: #000;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* ===== МОДАЛКА АВТОРИЗАЦИИ ===== */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10001;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-modal.active {
+            display: flex;
+        }
+
+        .auth-modal-content {
+            background: #1a2f3e;
+            border: 2px solid #ff6b00;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .auth-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .auth-modal-header h2 {
+            color: #fff;
+            font-size: 1.8em;
+        }
+
+        .auth-modal-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .auth-modal-content p {
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .auth-modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .auth-btn {
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .auth-btn.login {
+            background: rgba(255, 107, 0, 0.1);
+            border: 2px solid #ff6b00;
+            color: #ff6b00;
+        }
+
+        .auth-btn.register {
+            background: #ff6b00;
+            color: #000;
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .case-title {
+                font-size: 1.8em;
+            }
+
+            .case-image-large {
+                width: 200px;
+                height: 200px;
+            }
+
+            .open-btn-large, .quick-open-btn {
+                padding: 15px 30px;
+                font-size: 1em;
+            }
+
+            .roulette-box {
+                height: 180px;
+            }
+
+            .roulette-item {
+                width: 150px;
+            }
+        }
+        /* ===== УЛУЧШЕННЫЕ КАРТОЧКИ СКИНОВ ===== */
+
+.skin-card {
+  background: linear-gradient(135deg, #1a2035 0%, #0f1419 100%);
+  border: 2px solid #2a3f54;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Свечение по редкости */
+.skin-card[data-rarity="consumer"] {
+  border-color: #b0c3d9;
+  box-shadow: 0 0 15px rgba(176, 195, 217, 0.3);
+}
+
+.skin-card[data-rarity="industrial"] {
+  border-color: #5e98d9;
+  box-shadow: 0 0 15px rgba(94, 152, 217, 0.3);
+}
+
+.skin-card[data-rarity="milspec"] {
+  border-color: #4b69ff;
+  box-shadow: 0 0 20px rgba(75, 105, 255, 0.4);
+}
+
+.skin-card[data-rarity="restricted"] {
+  border-color: #8847ff;
+  box-shadow: 0 0 25px rgba(136, 71, 255, 0.5);
+}
+
+.skin-card[data-rarity="classified"] {
+  border-color: #d32ce6;
+  box-shadow: 0 0 30px rgba(211, 44, 230, 0.6);
+}
+
+.skin-card[data-rarity="covert"] {
+  border-color: #eb4b4b;
+  box-shadow: 0 0 35px rgba(235, 75, 75, 0.7);
+}
+
+.skin-card[data-rarity="rare"] {
+  border-color: #ffd700;
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+  animation: rareGlow 2s ease-in-out infinite;
+}
+
+@keyframes rareGlow {
+  0%, 100% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
+  50% { box-shadow: 0 0 60px rgba(255, 215, 0, 1); }
+}
+
+/* Эффект при наведении */
+.skin-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  border-color: #ff6b00;
+}
+
+.skin-card:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shine 1s;
+}
+
+@keyframes shine {
+  to { left: 100%; }
+}
+
+/* Контейнер для эмодзи */
+.skin-image {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* Сами эмодзи */
+.skin-image span {
+  font-size: 4em;
+  filter: drop-shadow(0 0 10px currentColor);
+  transition: all 0.3s;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(5deg); }
+}
+
+.skin-card:hover .skin-image span {
+  transform: scale(1.3) rotate(10deg);
+  filter: drop-shadow(0 0 20px currentColor);
+}
+
+/* Цвет эмодзи по редкости */
+.skin-card[data-rarity="consumer"] .skin-image span { color: #b0c3d9; }
+.skin-card[data-rarity="industrial"] .skin-image span { color: #5e98d9; }
+.skin-card[data-rarity="milspec"] .skin-image span { color: #4b69ff; }
+.skin-card[data-rarity="restricted"] .skin-image span { color: #8847ff; }
+.skin-card[data-rarity="classified"] .skin-image span { color: #d32ce6; }
+.skin-card[data-rarity="covert"] .skin-image span { color: #eb4b4b; }
+.skin-card[data-rarity="rare"] .skin-image span { color: #ffd700; }
+
+/* Название скина */
+.skin-name {
+  color: #fff;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Цена */
+.skin-price {
+  color: #00ff88;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* ===== РУЛЕТКА — УЛУЧШЕННЫЕ КАРТОЧКИ ===== */
+
+.roulette-item {
+  width: 200px;
+  flex-shrink: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background: linear-gradient(135deg, #1a2035 0%, #0f1419 100%);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.roulette-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.roulette-item[data-rarity="consumer"]::before { background: linear-gradient(90deg, #b0c3d9, #8fa8c0); }
+.roulette-item[data-rarity="industrial"]::before { background: linear-gradient(90deg, #5e98d9, #4a85c5); }
+.roulette-item[data-rarity="milspec"]::before { background: linear-gradient(90deg, #4b69ff, #3a55e0); }
+.roulette-item[data-rarity="restricted"]::before { background: linear-gradient(90deg, #8847ff, #7030e0); }
+.roulette-item[data-rarity="classified"]::before { background: linear-gradient(90deg, #d32ce6, #b820c8); }
+.roulette-item[data-rarity="covert"]::before { background: linear-gradient(90deg, #eb4b4b, #c83030); }
+.roulette-item[data-rarity="rare"]::before { background: linear-gradient(90deg, #ffd700, #ffaa00); }
+
+.roulette-item span {
+  font-size: 3.5em;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 15px currentColor);
+}
+
+.roulette-item[data-rarity="consumer"] span { color: #b0c3d9; }
+.roulette-item[data-rarity="industrial"] span { color: #5e98d9; }
+.roulette-item[data-rarity="milspec"] span { color: #4b69ff; }
+.roulette-item[data-rarity="restricted"] span { color: #8847ff; }
+.roulette-item[data-rarity="classified"] span { color: #d32ce6; }
+.roulette-item[data-rarity="covert"] span { color: #eb4b4b; }
+.roulette-item[data-rarity="rare"] span { color: #ffd700; }
+
+.roulette-item-name {
+  font-size: 0.85em;
+  color: #fff;
+  text-align: center;
+  word-wrap: break-word;
+  max-width: 180px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.roulette-item-price {
+  font-size: 1em;
+  color: #00ff88;
+  font-weight: bold;
+  margin-top: 8px;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ СКИНОВ ===== */
+
+@keyframes skinAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.skin-card {
+  animation: skinAppear 0.5s ease-out backwards;
+}
+
+/* Задержка для каждого скина */
+.skin-card:nth-child(1) { animation-delay: 0.05s; }
+.skin-card:nth-child(2) { animation-delay: 0.1s; }
+.skin-card:nth-child(3) { animation-delay: 0.15s; }
+.skin-card:nth-child(4) { animation-delay: 0.2s; }
+.skin-card:nth-child(5) { animation-delay: 0.25s; }
+.skin-card:nth-child(6) { animation-delay: 0.3s; }
+.skin-card:nth-child(7) { animation-delay: 0.35s; }
+.skin-card:nth-child(8) { animation-delay: 0.4s; }
+.skin-card:nth-child(9) { animation-delay: 0.45s; }
+.skin-card:nth-child(10) { animation-delay: 0.5s; }
+
+/* ===== РЕЗУЛЬТАТ ВЫИГРЫША ===== */
+
+.result-skin-card {
+  background: linear-gradient(135deg, #1a2035 0%, #0f1419 100%);
+  border: 3px solid;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 400px;
+  margin: 0 auto 30px;
+  box-shadow: 0 0 40px rgba(255, 107, 0, 0.5);
+  animation: winAppear 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes winAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.3) rotate(-180deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.result-skin-image {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.result-skin-image span {
+  font-size: 8em;
+  filter: drop-shadow(0 0 30px currentColor);
+  animation: winFloat 2s ease-in-out infinite;
+}
+
+@keyframes winFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  50% { transform: translateY(-15px) rotate(10deg) scale(1.1); }
+}
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+     <div class="header-container"></div>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="case-detail-container">
+        <button class="back-btn" onclick="window.history.back()">← Назад к кейсам</button>
+
+        <!-- ГЛАВНЫЙ БЛОК: КЕЙС + РУЛЕТКА -->
+        <div class="case-main-block">
+            <!-- Вид 1: Инфо о кейсе -->
+            <div class="case-info-view" id="caseInfoView">
+                <img src="" alt="Case" id="caseImage" class="case-image-large">
+                <h1 class="case-title" id="caseTitle">Загрузка...</h1>
+                <div class="case-price" id="casePrice">0.00  mon</div>
+                <div class="case-items-count" id="caseItemsCount">0 предметов</div>
+                <div class="case-actions">
+                    <button class="open-btn-large" id="openBtn" onclick="openCaseNormal()">🎰 ОТКРЫТЬ</button>
+                    <button class="quick-open-btn" id="quickOpenBtn" onclick="openCaseQuick()">⚡ ОТКРЫТЬ БЫСТРО</button>
+                </div>
+            </div>
+
+            <!-- Вид 2: Рулетка (появляется при открытии) -->
+            <div class="roulette-view" id="rouletteView">
+                <div class="roulette-title" id="rouletteTitle">Открытие кейса...</div>
+                <div class="roulette-box">
+                    <div class="roulette-center-line"></div>
+                    <div class="roulette-items" id="rouletteItems"></div>
+                </div>
+
+                <div class="roulette-result" id="rouletteResult">
+                    <div class="result-skin-card" id="resultSkinCard">
+                        <div class="result-skin-image" id="resultSkinImage"></div>
+                        <div class="result-skin-name" id="resultSkinName"></div>
+                        <div class="result-skin-price" id="resultSkinPrice"></div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="result-btn take" onclick="takeItem()">ЗАБРАТЬ</button>
+                        <button class="result-btn sell" onclick="sellItem()">ПРОДАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- СЕТКА СКИНОВ -->
+        <div class="case-skins-section">
+            <h2 class="case-skins-title">📦 Содержимое кейса</h2>
+            <div class="case-skins-grid" id="caseSkinsGrid"></div>
+        </div>
+    </div>
+
+    <!-- МОДАЛКА АВТОРИЗАЦИИ -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h2>Требуется авторизация</h2>
+                <button class="auth-modal-close" onclick="closeAuthModal()">✕</button>
+            </div>
+            <p>Для использования функций сайта необходимо войти в аккаунт</p>
+            <div class="auth-modal-buttons">
+                <a href="/login" class="auth-btn login">Войти</a>
+                <a href="/register" class="auth-btn register">Регистрация</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+    import { auth } from '/js/auth.js';
+    import { cases, skins, rarityColors } from '/js/data.js';
+
+    function showNotification(message, type = 'info') {
+        const notif = document.createElement('div');
+        notif.className = `notification ${type}`;
+        notif.textContent = message;
+        document.body.appendChild(notif);
+        
+        setTimeout(() => {
+            notif.style.opacity = '0';
+            notif.style.transform = 'translateX(400px)';
+            setTimeout(() => notif.remove(), 300);
+        }, 3000);
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const caseId = parseInt(urlParams.get('id'));
+    const caseData = cases.find(c => c.id === caseId);
+
+    if (!caseData) {
+        window.location.href = '/';
+    }
+
+    const user = await auth.loadUser();
+
+    const caseImageEl = document.getElementById('caseImage');
+    if (caseImageEl) {
+        if (caseData.image) caseImageEl.src = caseData.image;
+        else caseImageEl.style.display = 'none';
+    }
+
+    const caseTitleEl = document.getElementById('caseTitle');
+    if (caseTitleEl) caseTitleEl.textContent = caseData.name;
+
+    const casePriceEl = document.getElementById('casePrice');
+    if (casePriceEl) casePriceEl.textContent = caseData.price.toFixed(2) + ' mon';
+
+    const caseItemsEl = document.getElementById('caseItemsCount');
+    if (caseItemsEl) caseItemsEl.textContent = (caseData.itemsCount || caseData.items.length) + ' предметов';
+
+    const caseSkinsGrid = document.getElementById('caseSkinsGrid');
+    if (caseSkinsGrid) {
+        caseSkinsGrid.innerHTML = caseData.items.map(item => {
+            const skin = skins.find(s => s.id === item.skinId);
+            if (!skin) return '';
+            
+            return `
+                <div class="skin-card">
+                    <div class="skin-image" style="border-top: 4px solid ${rarityColors[skin.rarity] || '#fff'}">
+                        ${skin.image ? `<img src="${skin.image}" alt="${skin.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><span style="display:none">${skin.icon || '🔫'}</span>` : `<span>${skin.icon || '🔫'}</span>`}
+                    </div>
+                    <div class="skin-name">${skin.name}</div>
+                    <div class="skin-price">${skin.price.toFixed(2)} mon</div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    let currentWonSkin = null;
+    let isSpinning = false;
+    let isSelling = false; // ← ЗАЩИТА ОТ ДВОЙНОЙ ПРОДАЖИ
+
+    function setButtonsDisabled(disabled) {
+        const openBtn = document.getElementById('openBtn');
+        const quickOpenBtn = document.getElementById('quickOpenBtn');
+        if (openBtn) openBtn.disabled = disabled;
+        if (quickOpenBtn) quickOpenBtn.disabled = disabled;
+    }
+
+    function showRouletteView() {
+        document.getElementById('caseInfoView').classList.add('hidden');
+        document.getElementById('rouletteView').classList.add('active');
+    }
+
+    function showCaseInfoView() {
+        document.getElementById('caseInfoView').classList.remove('hidden');
+        document.getElementById('rouletteView').classList.remove('active');
+        document.getElementById('rouletteResult').classList.remove('active');
+    }
+
+    async function openCaseViaAPI() {
+        try {
+            const response = await fetch('/api/case/open', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${auth.token}`
+                },
+                body: JSON.stringify({ caseId: caseData.id })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Ошибка открытия кейса');
+            }
+
+            auth.user.balance = data.balance;
+            auth.user.xp = data.xp;
+            auth.user.level = data.level;
+            auth.user.inventory = data.inventory;
+            localStorage.setItem('user', JSON.stringify(auth.user));
+            auth.updateUI();
+
+            // Показываем уведомления
+if (data.leveledUp) {
+    showNotification(`🎉 Уровень повышен! Теперь вы ${data.level} уровня!`, 'success');
+    
+    // Показываем полученные награды
+    if (data.rewards && data.rewards.length > 0) {
+        setTimeout(() => {
+            showNotification(`🎁 Награды: ${data.rewards.join(', ')}`, 'success');
+        }, 1500);
+    }
+} else {
+    showNotification(`+${data.xpGained} XP`, 'info');
+}
+
+            localStorage.setItem('lastDrop', JSON.stringify({
+                skin: data.skin,
+                timestamp: Date.now()
+            }));
+
+            return data.skin;
+        } catch (error) {
+            console.error('Ошибка открытия кейса:', error);
+            showNotification(error.message, 'error');
+            return null;
+        }
+    }
+
+    window.openCaseQuick = async function() {
+        if (isSpinning) return;
+        if (!auth.isAuthenticated()) {
+            document.getElementById('authModal').classList.add('active');
+            return;
+        }
+        if (auth.user.balance < caseData.price) {
+            showNotification('Недостаточно средств!', 'error');
+            return;
+        }
+        
+
+        isSpinning = true;
+        setButtonsDisabled(true);
+
+        const wonSkin = await openCaseViaAPI();
+        
+        if (wonSkin) {
+            currentWonSkin = wonSkin;
+            showRouletteView();
+            document.getElementById('rouletteTitle').textContent = `ОТКРЫТИЕ ЗАВЕРШЕНО!`;
+            document.getElementById('rouletteResult').classList.add('active');
+            
+            const skinCard = document.getElementById('resultSkinCard');
+            if (skinCard) skinCard.style.borderColor = rarityColors[currentWonSkin.rarity] || '#fff';
+            
+            const resultImage = document.getElementById('resultSkinImage');
+            if (resultImage) {
+                resultImage.innerHTML = currentWonSkin.image ? 
+                    `<img src="${currentWonSkin.image}" alt="${currentWonSkin.name}">` : 
+                    `<div style="font-size: 6em;">${currentWonSkin.icon || '🔫'}</div>`;
+            }
+            
+            const resultName = document.getElementById('resultSkinName');
+            if (resultName) resultName.textContent = currentWonSkin.name;
+            
+            const resultPrice = document.getElementById('resultSkinPrice');
+            if (resultPrice) resultPrice.textContent = currentWonSkin.price.toFixed(2) + ' mon';
+            
+            showNotification(`Выпал: ${currentWonSkin.name}!`, 'success');
+        }
+
+        isSpinning = false;
+        setButtonsDisabled(false);
+    };
+
+    window.openCaseNormal = async function() {
+        if (isSpinning) return;
+        if (!auth.isAuthenticated()) {
+            document.getElementById('authModal').classList.add('active');
+            return;
+        }
+        if (auth.user.balance < caseData.price) {
+            showNotification('Недостаточно средств!', 'error');
+            return;
+        }
+
+        isSpinning = true;
+        setButtonsDisabled(true);
+
+        const wonSkin = await openCaseViaAPI();
+        
+        if (!wonSkin) {
+            isSpinning = false;
+            setButtonsDisabled(false);
+            return;
+        }
+
+        currentWonSkin = wonSkin;
+        showRouletteView();
+        document.getElementById('rouletteTitle').textContent = `Открытие: ${caseData.name}`;
+        document.getElementById('rouletteResult').classList.remove('active');
+
+        const itemsContainer = document.getElementById('rouletteItems');
+        const totalItems = 100;
+        const winPosition = 85;
+        const itemWidth = 200;
+
+        const rouletteSkins = [];
+        for (let i = 0; i < totalItems; i++) {
+            const randomItem = caseData.items[Math.floor(Math.random() * caseData.items.length)];
+            rouletteSkins.push(skins.find(s => s.id === randomItem.skinId));
+        }
+        rouletteSkins[winPosition] = wonSkin;
+
+        let html = '';
+        for (let i = 0; i < totalItems; i++) {
+            const skin = rouletteSkins[i];
+            const borderColor = rarityColors[skin.rarity] || '#fff';
+            html += `
+                <div class="roulette-item" style="border-top: 4px solid ${borderColor}">
+                    ${skin.image ? `<img src="${skin.image}" alt="${skin.name}"><div class="roulette-item-name">${skin.name}</div><div class="roulette-item-price">${skin.price.toFixed(2)} mon</div>` : `<div style="font-size: 3em;">${skin.icon || '🔫'}</div><div class="roulette-item-name">${skin.name}</div><div class="roulette-item-price">${skin.price.toFixed(2)} mon</div>`}
+                </div>
+            `;
+        }
+        
+        itemsContainer.innerHTML = html;
+        itemsContainer.style.transition = 'none';
+        itemsContainer.style.transform = 'translateX(0)';
+
+        setTimeout(() => {
+            const container = document.querySelector('.roulette-box');
+            const containerWidth = container ? container.offsetWidth : 900;
+            const centerOffset = (containerWidth / 2) - (itemWidth / 2);
+            const randomOffset = (Math.random() - 0.5) * 120;
+            const finalPosition = -(winPosition * itemWidth) + centerOffset + randomOffset;
+            
+            itemsContainer.style.transition = 'transform 12s cubic-bezier(0.15, 0.85, 0.35, 1)';
+            itemsContainer.style.transform = `translateX(${finalPosition}px)`;
+
+            setTimeout(() => {
+                document.getElementById('rouletteTitle').textContent = 'ОТКРЫТИЕ ЗАВЕРШЕНО!';
+                document.getElementById('rouletteResult').classList.add('active');
+                
+                const skinCard = document.getElementById('resultSkinCard');
+                if (skinCard) skinCard.style.borderColor = rarityColors[wonSkin.rarity] || '#fff';
+                
+                const resultImage = document.getElementById('resultSkinImage');
+                if (resultImage) {
+                    resultImage.innerHTML = wonSkin.image ? 
+                        `<img src="${wonSkin.image}" alt="${wonSkin.name}">` : 
+                        `<div style="font-size: 6em;">${wonSkin.icon || '🔫'}</div>`;
+                }
+                
+                const resultName = document.getElementById('resultSkinName');
+                if (resultName) resultName.textContent = wonSkin.name;
+                
+                const resultPrice = document.getElementById('resultSkinPrice');
+                if (resultPrice) resultPrice.textContent = wonSkin.price.toFixed(2) + ' mon';
+
+                showNotification(`Выпал: ${wonSkin.name}!`, 'success');
+
+                isSpinning = false;
+                setButtonsDisabled(false);
+            }, 12500);
+        }, 100);
+    };
+
+    window.takeItem = function() {
+        if (currentWonSkin) {
+            showNotification('Скин добавлен в инвентарь!', 'success');
+            localStorage.removeItem('lastDrop');
+        }
+        showCaseInfoView();
+    };
+
+    // ✅ ИСПРАВЛЕННАЯ ПРОДАЖА С ЗАЩИТОЙ ОТ ДВОЙНОГО НАЖАТИЯ
+    window.sellItem = async function() {
+        if (!currentWonSkin || isSelling) return; // Блокируем повторные нажатия
+        isSelling = true;
+
+        try {
+            const response = await fetch('/api/auth/sell-skin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${auth.token}`
+                },
+                body: JSON.stringify({ uniqueId: currentWonSkin.uniqueId })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                auth.user.balance = data.balance;
+                auth.user.inventory = data.inventory;
+                localStorage.setItem('user', JSON.stringify(auth.user));
+                auth.updateUI();
+                showNotification(`Продан за ${currentWonSkin.price.toFixed(2)} mon`, 'success');
+            } else {
+                throw new Error(data.error);
+            }
+        } catch (error) {
+            console.error('Ошибка продажи:', error);
+            showNotification('Ошибка продажи скина', 'error');
+        } finally {
+            isSelling = false;
+            currentWonSkin = null; // ← Очищаем предмет, чтобы его нельзя было продать снова
+            localStorage.removeItem('lastDrop');
+            showCaseInfoView();
+        }
+    };
+
+    window.closeAuthModal = function() {
+        document.getElementById('authModal').classList.remove('active');
+    };
+
+    const lastDrop = localStorage.getItem('lastDrop');
+    if (lastDrop) {
+        try {
+            const dropData = JSON.parse(lastDrop);
+            currentWonSkin = dropData.skin;
+            
+            showRouletteView();
+            document.getElementById('rouletteTitle').textContent = `ОТКРЫТИЕ ЗАВЕРШЕНО!`;
+            document.getElementById('rouletteResult').classList.add('active');
+            
+            const skinCard = document.getElementById('resultSkinCard');
+            if (skinCard) skinCard.style.borderColor = rarityColors[currentWonSkin.rarity] || '#fff';
+            
+            const resultImage = document.getElementById('resultSkinImage');
+            if (resultImage) {
+                resultImage.innerHTML = currentWonSkin.image ? 
+                    `<img src="${currentWonSkin.image}" alt="${currentWonSkin.name}">` : 
+                    `<div style="font-size: 6em;">${currentWonSkin.icon || '🔫'}</div>`;
+            }
+            
+            const resultName = document.getElementById('resultSkinName');
+            if (resultName) resultName.textContent = currentWonSkin.name;
+            
+            const resultPrice = document.getElementById('resultSkinPrice');
+            if (resultPrice) resultPrice.textContent = currentWonSkin.price.toFixed(2) + ' mon';
+            
+            showNotification(`Восстановлен дроп: ${currentWonSkin.name}!`, 'success');
+        } catch (error) {
+            console.error('Ошибка восстановления дропа:', error);
+            localStorage.removeItem('lastDrop');
+        }
+    }
+</script>
+    <script src="/js/load-header.js"></script>
+</body>
+</html>

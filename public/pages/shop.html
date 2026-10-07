@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин - Mone Drop</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/icons.css">
+    <style>
+        .header-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.5));
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-size: 1.8em;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.logo-title span {
+    color: #ff6b00;
+}
+
+.logo-subtitle {
+    font-size: 0.7em;
+    color: #888;
+    letter-spacing: 3px;
+    margin-top: 2px;
+}
+    </style>
+</head>
+<body>
+    <!-- SVG Sprite -->
+<svg style="display: none;">
+    <symbol id="icon-upgrade" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="12" fill="#FFC107"/>
+        <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" fill="#000"/>
+    </symbol>
+    <symbol id="icon-cases" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="12" fill="#FFC107"/>
+        <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" fill="#000"/>
+    </symbol>
+    <symbol id="icon-shop" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="12" fill="#FFC107"/>
+        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" fill="#000"/>
+    </symbol>
+</svg>
+    <!-- ШАПКА -->
+     <!-- Лента дропов -->
+<div class="drops-feed">
+    <div class="drops-feed-container" id="dropsFeed">
+        <!-- Дропы будут загружены через JavaScript -->
+    </div>
+</div>
+   <div class="header-container"></div>
+
+    <div class="container">
+        <!-- МАГАЗИН -->
+        <div class="section">
+            <h2>🛒 Магазин скинов</h2>
+            <div class="skins-grid" id="shopGrid"></div>
+        </div>
+
+        <!-- ИНВЕНТАРЬ -->
+        <div class="section">
+            <h2>📦 Ваш инвентарь</h2>
+            <div class="skins-grid" id="inventoryGrid"></div>
+        </div>
+    </div>
+
+    <!-- МОДАЛКА АВТОРИЗАЦИИ -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h2>Требуется авторизация</h2>
+                <button class="auth-modal-close" onclick="closeAuthModal()">✕</button>
+            </div>
+            <p>Для использования функций сайта необходимо войти в аккаунт</p>
+            <div class="auth-modal-buttons">
+                <a href="/login" class="auth-btn login">Войти</a>
+                <a href="/register" class="auth-btn register">Регистрация</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ПОДКЛЮЧЕНИЕ МОДУЛЕЙ -->
+    <script type="module" src="/js/main.js">
+        // Загрузка ленты дропов
+async function loadDropsFeed() {
+    const dropsFeed = document.getElementById('dropsFeed');
+    if (!dropsFeed) return;
+    
+    try {
+        const response = await fetch('/api/drops');
+        const drops = await response.json();
+        
+        if (drops.length === 0) {
+            // Демо-дропы если нет реальных
+            dropsFeed.innerHTML = `
+                <div class="drop-item">
+                    <span style="font-size: 2em;">🎁</span>
+                    <div>
+                        <div class="drop-username">Система</div>
+                        <div class="drop-skin-name">Начни открывать кейсы!</div>
+                    </div>
+                </div>
+            `;
+            return;
+        }
+        
+        // Дублируем для бесконечной прокрутки
+        const dropsHTML = drops.map(drop => `
+            <div class="drop-item">
+                ${drop.skin.image ? `<img src="${drop.skin.image}" alt="${drop.skin.name}">` : '<span style="font-size: 2em;"></span>'}
+                <div>
+                    <div class="drop-username">${drop.username}</div>
+                    <div class="drop-skin-name">${drop.skin.name}</div>
+                    <div class="drop-skin-price">${drop.skin.price.toFixed(2)}  mon</div>
+                </div>
+            </div>
+        `).join('');
+        
+        dropsFeed.innerHTML = dropsHTML + dropsHTML; // Дублируем для плавной прокрутки
+        
+    } catch (error) {
+        console.error('Ошибка загрузки дропов:', error);
+    }
+}
+
+// Загружаем дропы при загрузке страницы
+loadDropsFeed();
+
+// Обновляем каждые 10 секунд
+setInterval(loadDropsFeed, 10000);
+    </script>
+    <script src="/js/load-header.js"></script>
+<script type="module">
+    import { auth } from '/js/auth.js';
+    import { skins, rarityColors } from '/js/data.js';
+
+    // Функция загрузки и отображения инвентаря
+    async function loadInventory() {
+        const inventoryGrid = document.getElementById('inventoryGrid');
+        if (!inventoryGrid) return;
+
+        try {
+            // Получаем данные пользователя с инвентарем
+            const response = await fetch('/api/auth/me', {
+                headers: { 
+                    'Authorization': `Bearer ${auth.token}` 
+                }
+            });
+            
+            const data = await response.json();
+            
+            if (!data.user || !data.user.inventory || data.user.inventory.length === 0) {
+                inventoryGrid.innerHTML = '<div class="empty-inventory">Инвентарь пуст — откройте кейсы!</div>';
+                return;
+            }
+
+            // Очищаем контейнер
+            inventoryGrid.innerHTML = '';
+
+            // Отображаем каждый предмет
+            data.user.inventory.forEach(item => {
+                const itemCard = createInventoryItemCard(item);
+                inventoryGrid.appendChild(itemCard);
+            });
+
+        } catch (error) {
+            console.error('Ошибка загрузки инвентаря:', error);
+            inventoryGrid.innerHTML = '<div class="error">Ошибка загрузки инвентаря</div>';
+        }
+    }
+
+    // Создание карточки предмета
+    function createInventoryItemCard(item) {
+        const card = document.createElement('div');
+        card.className = 'inventory-item';
+        
+        const borderColor = rarityColors[item.rarity] || '#fff';
+        
+        card.innerHTML = `
+            <div class="inventory-item-image" style="border-top: 3px solid ${borderColor}">
+                ${item.image ? `
+                    <img src="${item.image}" 
+                         alt="${item.name}" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="inventory-item-icon" style="display:none; font-size: 4em;">🔫</div>
+                ` : `
+                    <div class="inventory-item-icon" style="font-size: 4em;">🔫</div>
+                `}
+            </div>
+            <div class="inventory-item-name">${item.name}</div>
+            <div class="inventory-item-price">${item.price.toFixed(2)}  mon</div>
+            <button class="inventory-item-sell" onclick="sellInventoryItem(${item.uniqueId}, ${item.price})">
+                ПРОДАТЬ
+            </button>
+        `;
+        
+        return card;
+    }
+
+    // Продажа предмета из инвентаря
+    window.sellInventoryItem = async function(uniqueId, price) {
+        if (!confirm(`Продать скин за ${price.toFixed(2)}  mon?`)) return;
+
+        try {
+            const response = await fetch('/api/auth/sell-skin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${auth.token}`
+                },
+                body: JSON.stringify({ uniqueId })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Обновляем баланс в хедере
+                if (typeof auth !== 'undefined') {
+                    auth.user.balance = data.balance;
+                    auth.user.inventory = data.inventory;
+                    localStorage.setItem('user', JSON.stringify(auth.user));
+                    auth.updateUI();
+                }
+                
+                // Перезагружаем инвентарь
+                await loadInventory();
+                
+                showNotification(`Скин продан за ${price.toFixed(2)}  mon`, 'success');
+            } else {
+                throw new Error(data.error);
+            }
+        } catch (error) {
+            console.error('Ошибка продажи:', error);
+            showNotification('Ошибка продажи скина', 'error');
+        }
+    };
+
+    // Уведомления
+    function showNotification(message, type = 'info') {
+        const notif = document.createElement('div');
+        notif.className = `notification ${type}`;
+        notif.textContent = message;
+        notif.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: ${type === 'success' ? '#00ff88' : '#ff4444'};
+            color: #000;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+        `;
+        document.body.appendChild(notif);
+        
+        setTimeout(() => {
+            notif.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => notif.remove(), 300);
+        }, 3000);
+    }
+
+    // Загружаем инвентарь при загрузке страницы
+    document.addEventListener('DOMContentLoaded', () => {
+        if (auth.isAuthenticated()) {
+            loadInventory();
+        }
+    });
+</script>
+
+<style>
+    /* Стили для инвентаря */
+    .skins-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    .inventory-item {
+        background: rgba(13, 17, 23, 0.8);
+        border: 1px solid rgba(255, 107, 0, 0.2);
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .inventory-item:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 107, 0, 0.6);
+        box-shadow: 0 8px 25px rgba(255, 107, 0, 0.3);
+    }
+
+    .inventory-item-image {
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .inventory-item-image img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    .inventory-item-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .inventory-item-name {
+        font-size: 13px;
+        color: #fff;
+        margin-bottom: 8px;
+        font-weight: 500;
+        min-height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.3;
+    }
+
+    .inventory-item-price {
+        font-size: 16px;
+        font-weight: bold;
+        color: #00ff88;
+        margin-bottom: 12px;
+        text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    }
+
+    .inventory-item-sell {
+        width: 100%;
+        padding: 10px;
+        background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+    .inventory-item-sell:hover {
+        background: linear-gradient(135deg, #ff6666 0%, #ff4444 100%);
+        box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+        transform: translateY(-2px);
+    }
+
+    .empty-inventory {
+        text-align: center;
+        padding: 60px 20px;
+        color: #888;
+        font-size: 18px;
+        grid-column: 1 / -1;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+</style>
+</body>
+</html>

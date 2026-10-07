@@ -1,0 +1,91 @@
+﻿<div class="header">
+    <div class="header-content">
+        <a href="/" class="logo-link">
+            <img src="/images/logo.png" alt="Mone Drop" class="header-logo">
+            <div class="logo-text">
+                <div class="logo-title">Mone<span>Drop</span></div>
+                <div class="logo-subtitle">У НАС ВЫИГРЫВАЮТ</div>
+            </div>
+        </a>
+
+        <div class="header-nav">
+            <a href="/upgrade" class="nav-btn">
+                <img src="/images/icons/icon-upgrade.png" alt="Upgrade" class="nav-icon-png">
+                АПГРЕЙД
+            </a>
+            <a href="/shop" class="nav-btn">
+                <img src="/images/icons/icon-shop.png" alt="Shop" class="nav-icon-png">
+                МАГАЗИН
+            </a>
+            <a href="/levels" class="nav-btn">
+        <img src="/images/icons/icon-levels.png" alt="Levels" class="nav-icon-png">
+        УРОВНИ
+    </a>
+        </div>
+
+        <div class="header-right">
+            <!-- Социальные сети и поддержка -->
+            <div class="social-links">
+                <a href="https://vk.com/твоя_группа" target="_blank" class="social-btn" title="VK">
+                    <img src="/images/icons/icon-vk.png" alt="VK" class="social-icon">
+                </a>
+                <a href="https://t.me/твой_канал" target="_blank" class="social-btn" title="Telegram">
+                    <img src="/images/icons/icon-telegram.png" alt="Telegram" class="social-icon">
+                </a>
+                <a href="https://t.me/твой_саппорт" target="_blank" class="social-btn" title="Техподдержка">
+                    <img src="/images/icons/icon-support.png" alt="Support" class="social-icon">
+                </a>
+            </div>
+             <!-- XP и уровень -->
+    <div class="xp-display" id="xpSection">
+        <span class="xp-level">Ур. 1</span>
+        <div class="xp-bar">
+            <div class="xp-progress" style="width: 0%"></div>
+        </div>
+        <span class="xp-amount">0 XP</span>
+    </div>
+ <!-- Кнопка пополнения -->
+    <button class="deposit-btn" onclick="alert('Система пополнения в разработке!')">
+        <svg class="deposit-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        ПОПОЛНИТЬ
+    </button>
+    <!-- Pride -->
+<div class="pride-display" id="prideSection" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: rgba(255, 215, 0, 0.15); border: 1px solid rgba(255, 215, 0, 0.4); border-radius: 10px; margin-right: 15px;">
+    <span style="font-size: 20px;">👑</span>
+    <span style="font-size: 14px; font-weight: bold; color: #ffd700;">0 Pride</span>
+</div>
+
+
+            <!-- Баланс -->
+            <div class="balance-display" id="balanceSection">
+                <img src="/images/icons/icon-balance.png" alt="Balance" class="balance-icon-png">
+                <span class="balance-amount">0.00  mon</span>
+            </div>
+            
+            <!-- Профиль с выпадающим меню -->
+            <div class="profile-dropdown">
+                <button class="profile-btn" id="profileBtn">
+                    <img src="/images/icons/icon-profile.png" alt="Profile" class="profile-avatar">
+                    <span class="profile-name" id="profileName">Гость</span>
+                    <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z" fill="#ff6b00"/>
+                    </svg>
+                </button>
+                
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="/profile" class="dropdown-item">
+                        <img src="/images/icons/icon-profile.png" alt="Profile" class="dropdown-icon">
+                        <span>Профиль</span>
+                    </a>
+                    <a href="#" class="dropdown-item logout-item" onclick="auth.logout(); return false;">
+                        <img src="/images/icons/icon-logout.png" alt="Logout" class="dropdown-icon">
+                        <span>Выйти из профиля</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

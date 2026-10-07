@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - CaseBattle</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/icons.css">
+</head>
+<body>
+    <!-- SVG Sprite -->
+<svg style="display: none;">
+    <symbol id="icon-upgrade" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="12" fill="#FFC107"/>
+        <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" fill="#000"/>
+    </symbol>
+    <symbol id="icon-cases" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="12" fill="#FFC107"/>
+        <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" fill="#000"/>
+    </symbol>
+    <symbol id="icon-shop" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="12" fill="#FFC107"/>
+        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" fill="#000"/>
+    </symbol>
+</svg>
+    <div class="login-container">
+        <div class="login-logo">CASE<span>BATTLE</span></div>
+        <div class="login-subtitle">СОЗДАЙ АККАУНТ</div>
+        
+        <form id="registerForm" class="login-form">
+            <input type="text" id="username" placeholder="Имя пользователя" required>
+            <input type="password" id="password" placeholder="Пароль" required>
+            <input type="password" id="confirmPassword" placeholder="Повторите пароль" required>
+            <button type="submit" class="login-btn">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+        </form>
+
+        <div id="registerError" class="error-message"></div>
+
+        <div class="login-footer">
+            Уже есть аккаунт? <a href="/login">Войти</a>
+        </div>
+    </div>
+
+   <script type="module" src="/js/auth.js"></script>
+<script type="module">
+    import { auth } from '/js/auth.js';
+         document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const errorDiv = document.getElementById('registerError');
+        
+        errorDiv.textContent = '';
+        
+        if (password !== confirmPassword) {
+            errorDiv.textContent = 'Пароли не совпадают';
+            return;
+        }
+        
+        const result = await auth.register(username, password);
+        
+        if (result.success) {
+            window.location.href = '/';
+        } else {
+            errorDiv.textContent = result.error;
+        }
+    });
+</script>
+</body>
+</html>

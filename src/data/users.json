@@ -1,0 +1,207 @@
+[
+  {
+    "id": 1790986266967,
+    "steamId": "https://steamcommunity.com/openid/id/76561199309559633",
+    "username": "дай селфи",
+    "avatar": "https://avatars.steamstatic.com/8dcd077991e07b252fc6f89fcb7b8d4b70adb61c_full.jpg",
+    "balance": 4000,
+    "xp": 420,
+    "level": 5,
+    "pride": 6,
+    "claimedRewards": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "frames": [
+      {
+        "level": 5,
+        "type": "frame",
+        "name": "1000 mon + 2 Pride + Бронзовая рамка",
+        "claimedAt": "2026-10-03T00:25:41.641Z"
+      }
+    ],
+    "equippedFrame": null,
+    "inventory": [],
+    "stats": {
+      "casesOpened": 4,
+      "totalSpent": 1116,
+      "bestDrop": {
+        "name": "P250 | Boreal Forest",
+        "price": 320,
+        "image": "/images/skins/23.avif",
+        "date": "2026-10-03T00:34:08.441Z"
+      },
+      "skinsSold": 105
+    },
+    "createdAt": "2026-10-03T00:11:06.967Z",
+    "lastDrop": {
+      "skin": {
+        "id": 23,
+        "name": "P250 | Boreal Forest",
+        "price": 320,
+        "rarity": "industrial",
+        "icon": "🔫",
+        "image": "/images/skins/23.avif",
+        "uniqueId": 1790988228049.086,
+        "wonAt": "2026-10-03T00:43:48.049Z",
+        "caseName": "StayCary",
+        "casePrice": 279
+      },
+      "timestamp": 1790988228049
+    }
+  },
+  {
+    "id": 1791026878905,
+    "username": "Mone",
+    "password": "$2a$10$vuCrN2KdFcJrGSlKoP/60O2e/OCXSi4q2nUXqKFdWZ2zuYaSAvqbC",
+    "balance": 14636,
+    "pride": 21,
+    "frames": [
+      {
+        "level": 5,
+        "type": "frame",
+        "name": "1000 mon + 2 Pride + Бронзовая рамка",
+        "claimedAt": "2026-10-03T11:36:36.526Z"
+      },
+      {
+        "level": 10,
+        "type": "frame",
+        "name": "3000 mon + 2 Pride + Серебряная рамка",
+        "claimedAt": "2026-10-03T11:39:20.669Z"
+      },
+      {
+        "level": 15,
+        "type": "frame",
+        "name": "5000 mon + 2 Pride + Золотая рамка",
+        "claimedAt": "2026-10-03T11:39:21.685Z"
+      }
+    ],
+    "equippedFrame": 5,
+    "xp": 2060,
+    "level": 21,
+    "inventory": [
+      {
+        "id": 1,
+        "name": "P250 | Sand Dune",
+        "price": 12,
+        "rarity": "consumer",
+        "icon": "🔫",
+        "image": "/images/skins/1.avif",
+        "uniqueId": 1791027264856.5027
+      },
+      {
+        "id": 1,
+        "name": "P250 | Sand Dune",
+        "price": 12,
+        "rarity": "consumer",
+        "icon": "🔫",
+        "image": "/images/skins/1.avif",
+        "uniqueId": 1791027265088.308
+      },
+      {
+        "id": 1,
+        "name": "P250 | Sand Dune",
+        "price": 12,
+        "rarity": "consumer",
+        "icon": "🔫",
+        "image": "/images/skins/1.avif",
+        "uniqueId": 1791027265306.0544
+      },
+      {
+        "id": 1,
+        "name": "P250 | Sand Dune",
+        "price": 12,
+        "rarity": "consumer",
+        "icon": "🔫",
+        "image": "/images/skins/1.avif",
+        "uniqueId": 1791027265528.7578
+      },
+      {
+        "id": 1,
+        "name": "P250 | Sand Dune",
+        "price": 12,
+        "rarity": "consumer",
+        "icon": "🔫",
+        "image": "/images/skins/1.avif",
+        "uniqueId": 1791027265792.5505
+      },
+      {
+        "id": 58,
+        "name": "M4A4 | Howl",
+        "price": 95000,
+        "rarity": "covert",
+        "icon": "🔫",
+        "image": "/images/skins/58.avif",
+        "uniqueId": 1791027624128.941
+      },
+      {
+        "id": 59,
+        "name": "AWP | Dragon Lore",
+        "price": 120000,
+        "rarity": "covert",
+        "icon": "🔫",
+        "image": "/images/skins/59.webp",
+        "uniqueId": 1791027636208.1855
+      },
+      {
+        "id": 56,
+        "name": "Five-SeveN | Hyper Beast",
+        "price": 45000,
+        "rarity": "classified",
+        "icon": "🔫",
+        "image": "/images/skins/56.avif",
+        "uniqueId": 1791027638752.488
+      }
+    ],
+    "createdAt": "2026-10-03T11:27:58.905Z",
+    "claimedRewards": [
+      1,
+      3,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      15,
+      14,
+      13,
+      12,
+      11,
+      18,
+      17,
+      16
+    ],
+    "lastDrop": {
+      "skin": {
+        "id": 47,
+        "name": "P250 | Nuclear Threat",
+        "price": 7500,
+        "rarity": "restricted",
+        "icon": "🔫",
+        "image": "/images/skins/47.avif",
+        "uniqueId": 1791027602807.1965,
+        "wonAt": "2026-10-03T11:40:02.807Z",
+        "caseName": "WallStrike",
+        "casePrice": 3300
+      },
+      "timestamp": 1791027602807
+    },
+    "stats": {
+      "casesOpened": 182,
+      "totalSpent": 183827,
+      "bestDrop": {
+        "name": "Desert Eagle | Blaze",
+        "price": 200000,
+        "image": "/images/skins/62.avif",
+        "date": "2026-10-03T11:38:12.767Z"
+      },
+      "skinsSold": 183
+    }
+  }
+]
